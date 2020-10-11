@@ -1,16 +1,15 @@
 # MasterMind. Solución domainModel
-Diego Fernández Aceves
-dfera10@gmail.com
+Diego Fernández Aceves - dfera10@gmail.com<br/>
 Version 0.0.1
 
 # Indice
- - [Funcionalidad básica](#Funcionalidad básica)
- - [Vista de Lógica/Diseño](#Vista de Lógica/Diseño)
+ - [Funcionalidad básica](#Funcionalidadbásica)
+ - [Vista de Lógica/Diseño](#VistadeLógicDiseño)
     * Arquitectura
     * Paquete mastermind
 
 # Funcionalidad básica
- - [Wiki](https://en.wikipedia.org/wiki/Tic-tac-toe)
+ - [Wiki](https://en.wikipedia.org/wiki/Mastermind_(board_game))
     - Funcionalidad: Básica
     - Interfaz: Texto
     - Distribución: StandAlone
@@ -21,11 +20,10 @@ Version 0.0.1
 # Vista de Lógica/Diseño
 Aplicación del Modelo del Dominio mediante Estrategias de Análisis Formal, Análisis Clásico, Experto del Dominio, Reparto de Responsabilidades.
 
-##Arquitectura
+## Arquitectura
 [![MasterMind]("MasterMind")](/docs/images/MasterMindArquitecture.png)
 
-##Paquete mastermind
+## Paquete mastermind
 [![MasterMind]("MasterMind")](/docs/images/MasterMindDesignModel.png)
 
-Version 0.0.1
 Last updated 2020-10-11
