@@ -1,0 +1,183 @@
+@startuml
+
+package es.urjc.mastermind{
+
+    class MasterMind{
+        - Board board;
+        - Turn turn;
+        - void play()
+        - void playGame()
+        - boolean isResumedGame()
+        + static void main(String[] args)
+    }
+
+    Class Board{
+        - final int MAX_NUMBER_ATTEMPTS
+        - int numberAttempts
+        - Result[] results;
+        - SecretCombination secretCombination;
+        - ProposedCombination proposedCombination;
+        + Board()
+        + void setSecretCombination(SecretCombination secretCombination) {
+        + void setProposedCombination(ProposedCombination proposedCombination) {
+        + void matchCombination() {
+        + boolean isBrokenCombination() {
+        + boolean isWinner()
+        + void writeAttempts()
+    }
+
+    class Turn {
+        - Player makerPlayer;
+        - Player breakerPlayer;
+        + Turn(Board board)
+        + void play()
+    }
+
+    abstract class Player {
+        # Board board;
+        + Player(Board board)
+        + {abstract} void play()
+    }
+
+    class MakerPlayer extends Player {
+        - SecretCombination secretCombination;
+        + MakerPlayer(Board board)
+        + void play()
+    }
+
+    class BreakerPlayer extends Player {
+        - ProposedCombination proposedCombination;
+        + BreakerPlayer(Board board)
+        + void play()
+    }
+
+    abstract class Combination {
+        # static final int NUMBER_HOLES;
+        # Color[] colors;
+        + Combination();
+        + int getNumberHoles()
+        + Color[] getColors()
+    }
+
+    class ProposedCombination extends Combination {
+        + ProposedCombination()
+        + void putProposedCombination()
+        - Error checkError(String colorCharacters)
+        + boolean contains(Color color)
+    }
+
+    class SecretCombination extends Combination {
+        + SecretCombination()
+    }
+
+    class Result {
+        - Combination proposedCombination;
+        - int black;
+        - int white;
+        + Result(ProposedCombination proposedCombination, SecretCombination secretCombination)
+        + boolean isWinner()
+        + void writeProposedCombination()
+    }
+
+    enum Color {
+
+        RED
+        BLUE
+        YELLOW
+        GREEN
+        ORANGE
+        PURPLE
+        - char symbol;
+        Color(char symbol)
+        static Color get(int ordinal)
+        static Color get(char color)
+        + char getSymbol()
+    }
+
+    enum Error {
+
+        WRONG_LENGTH
+        WRONG_COLORS
+        DUPLICATE_COLORS
+        NULL_ERROR
+        - String message
+        Error()
+        Error(String message)
+        void writeln()
+        + boolean isNull()
+    }
+
+    enum Message {
+        TITLE
+        PROPOSE_COMBINATION
+        ARROW
+        ATTEMPTS
+        BLACK_AND_WHITE
+        SECRET_COMBINATION
+        WINNER
+        LOOSER
+        RESUME
+        - String message
+        Message(String message)
+        void write()
+        void writeln()
+        void writeln(int attempts)
+        void writeln(int blacks, int whites)
+        + String toString()
+    }
+}
+
+package es.urjc.utils {
+
+    class Console {
+        + static Console console
+        - BufferedReader bufferedReader
+        + static Console instance()
+        + String readString(String title)
+        + String readString()
+        + int readInt(String title)
+        + char readChar(String title)
+        + void writeln()
+        + void write(String string)
+        + void writeln(String string)
+        + void write(char character)
+        + void writeError(String format)
+    }
+
+    class YesNoDialog {
+        - static final char AFFIRMATIVE
+        - static final char NEGATIVE
+        - static final String SUFFIX
+        - static final String MESSAGE
+        - char answer;
+        + boolean read(String message)
+        - boolean isAffirmative()
+        - char getAnswer()
+        - boolean isNegative()
+   }
+
+}
+
+MasterMind *--> Board
+MasterMind *--> Turn
+Turn *--> Player
+Combination *---> Color
+BreakerPlayer *---> SecretCombination
+MakerPlayer o---> ProposedCombination
+Board *--> Result
+Board *--> SecretCombination
+Board *--> ProposedCombination
+Result *---> ProposedCombination
+ProposedCombination ..> Error
+MasterMind ...> Message
+Board ...> Message
+Error ...> Message
+ProposedCombination ..> Message
+Board ...> Console
+Error ...> Console
+Message ...> Console
+ProposedCombination ...> Console
+Result ...> Console
+YesNoDialog ...> Console
+MasterMind ...> YesNoDialog
+@enduml

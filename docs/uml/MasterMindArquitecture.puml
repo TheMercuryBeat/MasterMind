@@ -1,0 +1,12 @@
+@startuml
+
+package es.urjc.mastermind #DDDDDD{}
+package es.urjc.utils #DDDDDD{}
+package java.util #FFFFFF{}
+package java.io #FFFFFF{}
+
+es.urjc.mastermind ..> es.urjc.utils
+es.urjc.mastermind ..> java.util
+es.urjc.utils ..> java.io
+
+@enduml
