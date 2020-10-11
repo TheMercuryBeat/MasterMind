@@ -3,8 +3,8 @@ Diego Fernández Aceves - dfera10@gmail.com<br/>
 Version 0.0.1
 
 # Indice
- - [Funcionalidad básica](#Funcionalidad básica)
- - [Vista de Lógica/Diseño](#Vista de Lógica/Diseño)
+ - [Funcionalidad básica](#Funcionalidad-básica)
+ - [Vista de Lógica/Diseño](#Vista-de-Lógica/Diseño)
     * Arquitectura
     * Paquete mastermind
 
