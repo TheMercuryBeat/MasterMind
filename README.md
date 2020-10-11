@@ -15,15 +15,15 @@ Version 0.0.1
     - Distribución: StandAlone
     - Persistencia: No
  
-    [![MasterMind]("MasterMind")](/docs/images/300px-mastermind.jpg)
+    [![MasterMind]("MasterMind")](https://github.com/TheMercuryBeat/MasterMind/blob/domainModel/docs/images/300px-mastermind.jpg)
  
 # Vista de Lógica/Diseño
 Aplicación del Modelo del Dominio mediante Estrategias de Análisis Formal, Análisis Clásico, Experto del Dominio, Reparto de Responsabilidades.
 
 ## Arquitectura
-[![MasterMind]("MasterMind")](/docs/images/MasterMindArquitecture.png)
+[![MasterMind]("MasterMind")](https://github.com/TheMercuryBeat/MasterMind/blob/domainModel/docs/images/MasterMindArquitecture.png)
 
 ## Paquete mastermind
-[![MasterMind]("MasterMind")](/docs/images/MasterMindDesignModel.png)
+[![MasterMind]("MasterMind")](https://github.com/TheMercuryBeat/MasterMind/blob/domainModel/docs/images/MasterMindDesignModel.png)
 
 Last updated 2020-10-11
