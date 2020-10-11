@@ -3,8 +3,8 @@ Diego Fernández Aceves - dfera10@gmail.com<br/>
 Version 0.0.1
 
 # Indice
- - [Funcionalidad básica](#Funcionalidadbásica)
- - [Vista de Lógica/Diseño](#VistadeLógicDiseño)
+ - [Funcionalidad básica](#Funcionalidad básica)
+ - [Vista de Lógica/Diseño](#Vista de Lógica/Diseño)
     * Arquitectura
     * Paquete mastermind
 
@@ -15,15 +15,15 @@ Version 0.0.1
     - Distribución: StandAlone
     - Persistencia: No
  
-    [![MasterMind]("MasterMind")](https://github.com/TheMercuryBeat/MasterMind/blob/domainModel/docs/images/300px-mastermind.jpg)
+    ![MasterMind "MasterMind"](https://github.com/TheMercuryBeat/MasterMind/blob/domainModel/docs/images/300px-mastermind.jpg?raw=true)
  
 # Vista de Lógica/Diseño
 Aplicación del Modelo del Dominio mediante Estrategias de Análisis Formal, Análisis Clásico, Experto del Dominio, Reparto de Responsabilidades.
 
 ## Arquitectura
-[![MasterMind]("MasterMind")](https://github.com/TheMercuryBeat/MasterMind/blob/domainModel/docs/images/MasterMindArquitecture.png)
+![MasterMind "MasterMind"](https://github.com/TheMercuryBeat/MasterMind/blob/domainModel/docs/images/MasterMindArquitecture.png?raw=true)
 
 ## Paquete mastermind
-[![MasterMind]("MasterMind")](https://github.com/TheMercuryBeat/MasterMind/blob/domainModel/docs/images/MasterMindDesignModel.png)
+![MasterMind "MasterMind"](https://github.com/TheMercuryBeat/MasterMind/blob/domainModel/docs/images/MasterMindDesignModel.png?raw=true)
 
 Last updated 2020-10-11
