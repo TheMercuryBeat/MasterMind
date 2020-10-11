@@ -4,7 +4,7 @@ Version 0.0.1
 
 # Indice
  - [Funcionalidad básica](#Funcionalidad-básica)
- - [Vista de Lógica/Diseño](#Vista-de-Lógica/Diseño)
+ - [Vista de Lógica/Diseño](#Vista-de-LógicaDiseño)
     * Arquitectura
     * Paquete mastermind
 
