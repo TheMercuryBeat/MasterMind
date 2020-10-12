@@ -22,25 +22,25 @@ Version 0.0.2
     - Distribución: StandAlone
     - Persistencia: No
  
-    ![MasterMind "MasterMind"](https://github.com/TheMercuryBeat/MasterMind/blob/domainModel/docs/images/300px-mastermind.jpg?raw=true)
+    ![MasterMind "MasterMind"](https://github.com/TheMercuryBeat/MasterMind/blob/documentView/docs/images/300px-mastermind.jpg?raw=true)
  
 # Vista de Lógica/Diseño
 Aplicación del Modelo del Dominio mediante Estrategias de Análisis Formal, Análisis Clásico, Experto del Dominio, Reparto de Responsabilidades.
 
 ## Arquitectura
-![MasterMind "MasterMind"](https://github.com/TheMercuryBeat/MasterMind/blob/domainModel/docs/images/MasterMindArquitecture.png?raw=true)
+![MasterMind "MasterMind"](https://github.com/TheMercuryBeat/MasterMind/blob/documentView/docs/images/MasterMindArquitecture.png?raw=true)
 
 ## Paquete es.urjc.mastermind
-![MasterMind "MasterMind"](https://github.com/TheMercuryBeat/MasterMind/blob/domainModel/docs/images/MasterMindDesignModel-MasterMind.png?raw=true) 
+![MasterMind "MasterMind"](https://github.com/TheMercuryBeat/MasterMind/blob/documentView/docs/images/MasterMindDesignModel-MasterMind.png?raw=true) 
 
 ## Paquete es.urjc.mastermind.views
-![MasterMind "MasterMind"](https://github.com/TheMercuryBeat/MasterMind/blob/domainModel/docs/images/MasterMindDesignModel-MasterMindViews.png?raw=true) 
+![MasterMind "MasterMind"](https://github.com/TheMercuryBeat/MasterMind/blob/documentView/docs/images/MasterMindDesignModel-MasterMindViews.png?raw=true) 
 
 ## Paquete es.urjc.mastermind.models
-![MasterMind "MasterMind"](https://github.com/TheMercuryBeat/MasterMind/blob/domainModel/docs/images/MasterMindDesignModel-MasterMindModels.png?raw=true) 
+![MasterMind "MasterMind"](https://github.com/TheMercuryBeat/MasterMind/blob/documentView/docs/images/MasterMindDesignModel-MasterMindModels.png?raw=true) 
 
 ## Paquete es.urjc.utils
-![MasterMind "MasterMind"](https://github.com/TheMercuryBeat/MasterMind/blob/domainModel/docs/images/MasterMindDesignModel-MasterMindUtils.png?raw=true) 
+![MasterMind "MasterMind"](https://github.com/TheMercuryBeat/MasterMind/blob/documentView/docs/images/MasterMindDesignModel-MasterMindUtils.png?raw=true) 
 
 ## Calidad del Software
 
@@ -61,10 +61,10 @@ Aplicación del Modelo del Dominio mediante Estrategias de Análisis Formal, An�
     - ***Open/Close**: hay que modificar los modelos que estaban funcionando previamente para escoger una tecnología de vista u otra (if’s anidados)*
 
 ## Vista de Desarrollo/Implementación
-![MasterMind "MasterMind"](https://github.com/TheMercuryBeat/MasterMind/blob/domainModel/docs/images/MasterMindDevelopment.png?raw=true)
+![MasterMind "MasterMind"](https://github.com/TheMercuryBeat/MasterMind/blob/documentView/docs/images/MasterMindDevelopment.png?raw=true)
 
 ## Vista de Despliegue/Física
-![MasterMind "MasterMind"](https://github.com/TheMercuryBeat/MasterMind/blob/domainModel/docs/images/MasterMindDeployment.png?raw=true)
+![MasterMind "MasterMind"](https://github.com/TheMercuryBeat/MasterMind/blob/documentView/docs/images/MasterMindDeployment.png?raw=true)
 
 ## Vista de Procesos
 
