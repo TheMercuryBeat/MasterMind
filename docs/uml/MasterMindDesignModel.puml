@@ -162,6 +162,7 @@ MasterMind *--> Board
 MasterMind *--> Turn
 Turn *--> Player
 Combination *---> Color
+Player *--> Board
 BreakerPlayer *---> SecretCombination
 MakerPlayer o---> ProposedCombination
 Board *--> Result
