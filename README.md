@@ -1,5 +1,7 @@
-# MasterMind. Solución domainModel
-Diego Fernández Aceves - dfera10@gmail.com
+# MasterMind. Solución documentView
+Diego Fernández Aceves
+
+dfera10@gmail.com
 
 Version 0.0.2
 

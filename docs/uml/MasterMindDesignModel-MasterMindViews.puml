@@ -1,21 +1,4 @@
 @startuml
-package es.urjc.mastermind {
-    class MasterMind
-}
-
-package es.urjc.mastermind.models {
-    class Game
-}
-
-package es.urjc.mastermind.views {
-    class View
-}
-
-MasterMind *--> Game
-MasterMind *--> View
-@enduml
-
-@startuml
 package es.urjc.mastermind.views{
     class View
     class StartView
@@ -64,50 +47,4 @@ ProposedCombinationView ..> ErrorView
 ResumeView ..> MessageView
 MessageView ..> Console
 MessageView ..> YesNoDialog
-@enduml
-
-@startuml
-package es.urjc.mastermind.models{
-
-    class MasterMind
-    class Board
-    class Turn
-    class Player
-    class MakerPlayer
-    class BreakerPlayer
-    class Combination
-    class ProposedCombination
-    class SecretCombination
-    class Result
-    enum Color
-    enum Error
-}
-
-Player <|-- MakerPlayer
-Player <|-- BreakerPlayer
-
-Combination <|--- SecretCombination
-Combination <|--- ProposedCombination
-
-MasterMind *--> Board
-MasterMind *--> Turn
-Turn *--> Player
-Combination *--> Color
-Player *--> Board
-BreakerPlayer *--> SecretCombination
-MakerPlayer o--> ProposedCombination
-Board *--> Result
-Board *--> SecretCombination
-Board *--> ProposedCombination
-Result *--> ProposedCombination
-ProposedCombination ..> Error
-@enduml
-
-@startuml
-package es.urjc.utils {
-    class Console
-    class YesNoDialog
-}
-
-YesNoDialog *--> Console
 @enduml

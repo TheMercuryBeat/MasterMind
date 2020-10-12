@@ -1,0 +1,16 @@
+@startuml
+package es.urjc.mastermind {
+    class MasterMind
+}
+
+package es.urjc.mastermind.models {
+    class Game
+}
+
+package es.urjc.mastermind.views {
+    class View
+}
+
+MasterMind *--> Game
+MasterMind *--> View
+@enduml

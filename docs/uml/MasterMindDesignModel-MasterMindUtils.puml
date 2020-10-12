@@ -1,0 +1,8 @@
+@startuml
+package es.urjc.utils {
+    class Console
+    class YesNoDialog
+}
+
+YesNoDialog *--> Console
+@enduml
