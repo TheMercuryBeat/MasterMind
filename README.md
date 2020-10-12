@@ -1,5 +1,6 @@
 # MasterMind. Solución domainModel
-Diego Fernández Aceves - dfera10@gmail.com<br/>
+Diego Fernández Aceves - dfera10@gmail.com
+
 Version 0.0.1
 
 # Indice
@@ -7,6 +8,12 @@ Version 0.0.1
  - [Vista de Lógica/Diseño](#Vista-de-LógicaDiseño)
     * Arquitectura
     * Paquete mastermind
+    * Calidad del Software
+        * Diseño
+        * Rediseño
+    * Vista de Desarrollo/Implementación
+    * Vista de Despliegue/Física
+    * Vista de Procesos
 
 # Funcionalidad básica
  - [Wiki](https://en.wikipedia.org/wiki/Mastermind_(board_game))
@@ -26,4 +33,32 @@ Aplicación del Modelo del Dominio mediante Estrategias de Análisis Formal, An�
 ## Paquete mastermind
 ![MasterMind "MasterMind"](https://github.com/TheMercuryBeat/MasterMind/blob/domainModel/docs/images/MasterMindDesignModel.png?raw=true)
 
-Last updated 2020-10-11
+## Calidad del Software
+
+### Diseño
+
+- **Método largo**: Método "play" de Mastermind
+
+### Rediseño
+
+- *Nueva interfaz: Gráfica*
+
+    - ***Clases Grandes**: los Modelos asumen la responsabilidad y crecen en líneas, métodos y atributos con cada nueva tecnología*
+
+    - ***Alto acoplamiento**: los Modelos con cada nueva tecnología de interfaz (consola, gráficos, web)*
+
+    - ***Baja cohesión**: cada Modelo está gestionando sus atributos y las tecnologías de interfaz*
+
+    - ***Open/Close**: hay que modificar los modelos que estaban funcionando previamente para escoger una tecnología de vista u otra (if’s anidados)*
+
+## Vista de Desarrollo/Implementación
+![MasterMind "MasterMind"](https://github.com/TheMercuryBeat/MasterMind/blob/domainModel/docs/images/MasterMindDevelopment.png?raw=true)
+
+## Vista de Despliegue/Física
+![MasterMind "MasterMind"](https://github.com/TheMercuryBeat/MasterMind/blob/domainModel/docs/images/MasterMindDeployment.png?raw=true)
+
+## Vista de Procesos
+
+-   No hay concurrencia
+
+Last updated 2020-10-12
