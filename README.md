@@ -1,7 +1,7 @@
 # MasterMind. Solución domainModel
 Diego Fernández Aceves - dfera10@gmail.com
 
-Version 0.0.1
+Version 0.0.2
 
 # Indice
  - [Funcionalidad básica](#Funcionalidad-básica)
@@ -30,8 +30,17 @@ Aplicación del Modelo del Dominio mediante Estrategias de Análisis Formal, An�
 ## Arquitectura
 ![MasterMind "MasterMind"](https://github.com/TheMercuryBeat/MasterMind/blob/domainModel/docs/images/MasterMindArquitecture.png?raw=true)
 
-## Paquete mastermind
-![MasterMind "MasterMind"](https://github.com/TheMercuryBeat/MasterMind/blob/domainModel/docs/images/MasterMindDesignModel.png?raw=true)
+## Paquete es.urjc.mastermind
+![MasterMind "MasterMind"](https://github.com/TheMercuryBeat/MasterMind/blob/domainModel/docs/images/MasterMindDesignModel-MasterMind.png?raw=true) 
+
+## Paquete es.urjc.mastermind.views
+![MasterMind "MasterMind"](https://github.com/TheMercuryBeat/MasterMind/blob/domainModel/docs/images/MasterMindDesignModel-MasterMindViews.png?raw=true) 
+
+## Paquete es.urjc.mastermind.models
+![MasterMind "MasterMind"](https://github.com/TheMercuryBeat/MasterMind/blob/domainModel/docs/images/MasterMindDesignModel-MasterMindModels.png?raw=true) 
+
+## Paquete es.urjc.utils
+![MasterMind "MasterMind"](https://github.com/TheMercuryBeat/MasterMind/blob/domainModel/docs/images/MasterMindDesignModel-MasterMindUtils.png?raw=true) 
 
 ## Calidad del Software
 

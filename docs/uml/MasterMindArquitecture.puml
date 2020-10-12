@@ -1,12 +1,17 @@
 @startuml
 
 package es.urjc.mastermind #DDDDDD{}
+package es.urjc.mastermind.models #DDDDDD{}
+package es.urjc.mastermind.views #DDDDDD{}
 package es.urjc.utils #DDDDDD{}
 package java.util #FFFFFF{}
 package java.io #FFFFFF{}
 
-es.urjc.mastermind ..> es.urjc.utils
-es.urjc.mastermind ..> java.util
+es.urjc.mastermind ..> es.urjc.mastermind.models
+es.urjc.mastermind ..> es.urjc.mastermind.views
+es.urjc.mastermind.views ..> es.urjc.mastermind.models
+es.urjc.mastermind.views ..> es.urjc.utils
+es.urjc.mastermind.models ..> java.util
 es.urjc.utils ..> java.io
 
 @enduml

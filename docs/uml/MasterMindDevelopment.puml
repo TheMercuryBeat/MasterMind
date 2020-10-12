@@ -1,8 +1,12 @@
 @startuml
 
-package "  "  as mastermind {
+package "  "  as es.urjc.mastermind {
 }
-package "  "  as mastermind.utils {
+package "  "  as es.urjc.mastermind.views {
+}
+package "  "  as es.urjc.mastermind.models {
+}
+package "  "  as es.urjc.utils {
 }
 package "  "  as java.io {
 }
@@ -10,9 +14,11 @@ package "  "  as java.util {
 }
 
 [mastermind.jar]
-mastermind.jar *--> mastermind
-mastermind.jar *--> mastermind.utils
-mastermind.jar *--> java.io
-mastermind.jar *--> java.util
+mastermind.jar *---> es.urjc.mastermind
+mastermind.jar *---> es.urjc.mastermind.models
+mastermind.jar *---> es.urjc.mastermind.views
+mastermind.jar *---> es.urjc.utils
+mastermind.jar *---> java.io
+mastermind.jar *---> java.util
 
 @enduml
