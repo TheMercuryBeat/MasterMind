@@ -1,6 +1,6 @@
 package usantatecla.mastermind.views.graphics;
 
-import usantatecla.mastermind.controllers.Logic;
+import usantatecla.mastermind.controllers.Controller;
 import usantatecla.mastermind.views.AbstractView;
 
 public class View extends AbstractView {
@@ -9,26 +9,13 @@ public class View extends AbstractView {
     private final ProposalView proposalView;
     private final ResumeView resumeView;
 
-    public View(Logic logic) {
-        super(logic);
+    public View() {
         this.startView = new StartView();
-        this.proposalView = new ProposalView(this.logic);
-        this.resumeView = new ResumeView(this.logic);
+        this.proposalView = new ProposalView();
+        this.resumeView = new ResumeView();
     }
 
-    @Override
-    protected void start() {
-        this.startView.interact();
-    }
+    public void interact(Controller controller) {
 
-    @Override
-    protected boolean propose() {
-        return this.proposalView.interact();
     }
-
-    @Override
-    protected boolean isNewGame() {
-        return this.resumeView.interact();
-    }
-
 }

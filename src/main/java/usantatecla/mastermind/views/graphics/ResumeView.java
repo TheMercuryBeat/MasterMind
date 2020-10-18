@@ -1,17 +1,11 @@
 package usantatecla.mastermind.views.graphics;
 
-import usantatecla.mastermind.controllers.LogicResume;
+import usantatecla.mastermind.controllers.ResumeController;
 
 class ResumeView {
 
-    private final LogicResume logicResume;
-
-    public ResumeView(LogicResume logicResume) {
-        this.logicResume = logicResume;
-    }
-
-    boolean interact() {
-        return false;
+    void interact(ResumeController resumeController) {
+        resumeController.next();
     }
 
 }

@@ -3,11 +3,12 @@ package usantatecla.mastermind.controllers;
 import usantatecla.mastermind.models.Game;
 import usantatecla.mastermind.models.ProposedCombination;
 import usantatecla.mastermind.models.Result;
+import usantatecla.mastermind.models.State;
 
 public class ProposalController extends Controller {
 
-    public ProposalController(Game game) {
-        super(game);
+    public ProposalController(Game game, State state) {
+        super(game, state);
     }
 
     public void addProposedCombination(ProposedCombination proposedCombination) {

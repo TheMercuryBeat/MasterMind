@@ -1,46 +1,30 @@
 package usantatecla.mastermind.controllers;
 
 import usantatecla.mastermind.models.Game;
-import usantatecla.mastermind.models.ProposedCombination;
-import usantatecla.mastermind.models.Result;
+import usantatecla.mastermind.models.State;
+import usantatecla.mastermind.models.StateValue;
 
-public class Logic implements LogicProposal, LogicResume {
+import java.util.HashMap;
+import java.util.Map;
+
+public class Logic {
 
     private final Game game;
-    private final ProposalController proposalController;
-    private final ResumeController resumeController;
+    private final State state;
+    private final Map<StateValue, Controller> controllers;
 
     public Logic() {
+        this.state = new State();
         this.game = new Game();
-        this.proposalController = new ProposalController(this.game);
-        this.resumeController = new ResumeController(this.game);
+        this.controllers = new HashMap<>();
+        this.controllers.put(StateValue.INITIAL, new StartController(this.game, this.state));
+        this.controllers.put(StateValue.PROPOSAL, new ProposalController(this.game, this.state));
+        this.controllers.put(StateValue.RESUME, new ResumeController(this.game, this.state));
+        this.controllers.put(StateValue.EXIT, null);
+
     }
 
-    public void addProposedCombination(ProposedCombination proposedCombination) {
-        this.proposalController.addProposedCombination(proposedCombination);
-    }
-
-    public int getAttempts() {
-        return this.proposalController.getAttempts();
-    }
-
-    public ProposedCombination getProposedCombination(int position) {
-        return this.proposalController.getProposedCombination(position);
-    }
-
-    public Result getResult(int position) {
-        return this.proposalController.getResult(position);
-    }
-
-    public boolean isWinner() {
-        return this.proposalController.isWinner();
-    }
-
-    public boolean isLooser() {
-        return this.proposalController.isLooser();
-    }
-
-    public void clear() {
-        this.resumeController.clear();
+    public Controller getController() {
+        return this.controllers.get(this.state.getValueState());
     }
 }

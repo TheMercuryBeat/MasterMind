@@ -1,19 +1,16 @@
 package usantatecla.mastermind.views.graphics;
 
-import usantatecla.mastermind.controllers.LogicProposal;
+import usantatecla.mastermind.controllers.ProposalController;
 
 class ProposalView {
 
-    private final LogicProposal logicProposal;
     private final SecretCombinationView secretCombinationView;
 
-    ProposalView(LogicProposal logicProposal) {
-        this.logicProposal = logicProposal;
+    public ProposalView() {
         this.secretCombinationView = new SecretCombinationView();
     }
 
-    boolean interact() {
-        return false;
+    void interact(ProposalController proposalController) {
+        proposalController.next();
     }
-
 }
