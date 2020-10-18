@@ -9,7 +9,7 @@ public class ColorView extends WithConsoleView {
 
     private final Color color;
 
-    public ColorView(Color color) {
+    ColorView(Color color) {
         this.color = color;
     }
 

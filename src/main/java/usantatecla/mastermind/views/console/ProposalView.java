@@ -9,7 +9,7 @@ class ProposalView extends WithConsoleView {
 
     private final SecretCombinationView secretCombinationView;
 
-    public ProposalView() {
+    ProposalView() {
         this.secretCombinationView = new SecretCombinationView();
     }
 

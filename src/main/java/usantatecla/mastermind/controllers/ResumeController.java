@@ -5,7 +5,7 @@ import usantatecla.mastermind.models.State;
 
 public class ResumeController extends Controller {
 
-    public ResumeController(Game game, State state) {
+    ResumeController(Game game, State state) {
         super(game, state);
     }
 

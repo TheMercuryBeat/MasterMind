@@ -7,7 +7,7 @@ import usantatecla.mastermind.models.State;
 
 public class ProposalController extends Controller {
 
-    public ProposalController(Game game, State state) {
+    ProposalController(Game game, State state) {
         super(game, state);
     }
 

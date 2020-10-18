@@ -12,7 +12,7 @@ public class ErrorView extends WithConsoleView {
 
     private final Error error;
 
-    public ErrorView(Error error) {
+    ErrorView(Error error) {
         this.error = error;
     }
 
