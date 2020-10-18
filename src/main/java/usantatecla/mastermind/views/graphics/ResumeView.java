@@ -1,13 +1,13 @@
 package usantatecla.mastermind.views.graphics;
 
-import usantatecla.mastermind.models.Game;
+import usantatecla.mastermind.controllers.ResumeController;
 
 class ResumeView {
 
-    private final Game game;
+    private final ResumeController resumeController;
 
-    ResumeView(Game game) {
-        this.game = game;
+    ResumeView(ResumeController resumeController) {
+        this.resumeController = resumeController;
     }
 
     boolean interact() {

@@ -1,19 +1,19 @@
 package usantatecla.mastermind.views.graphics;
 
-import usantatecla.mastermind.models.Game;
+import usantatecla.mastermind.controllers.ProposalController;
 
 class ProposalView {
 
-	private final Game game;
-	private final SecretCombinationView secretCombinationView;
+    private final ProposalController proposalController;
+    private final SecretCombinationView secretCombinationView;
 
-	ProposalView(Game game) {
-		this.game = game;
-		this.secretCombinationView = new SecretCombinationView();
-	}
+    ProposalView(ProposalController proposalController) {
+        this.proposalController = proposalController;
+        this.secretCombinationView = new SecretCombinationView();
+    }
 
-	boolean interact() {
-		return false;
-	}
+    boolean interact() {
+        return false;
+    }
 
 }
