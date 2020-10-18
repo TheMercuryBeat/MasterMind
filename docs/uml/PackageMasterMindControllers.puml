@@ -1,0 +1,68 @@
+
+@startuml
+
+package mastermind.controllers {
+
+  interface ControllerVisitor {
+       visit(StartController startController): void
+       visit(ProposalController proposalController): void
+       visit(ResumeController resumeController): void
+    }
+
+   abstract class Controller {
+       # Game game
+       # State state
+       ~ Controller(Game game, State state)
+       + next(): void
+       + {abstract} accept(ControllerVisitor controllerVisitor): void
+   }
+
+    class Logic {
+        - final Game game
+        - final State state
+        - final Map<StateValue, Controller> controllers
+        + Logic()
+        + Controller getController()
+    }
+
+    class ProposalController {
+        ~ ProposalController(Game game, State state)
+        + addProposedCombination(ProposedCombination proposedCombination): void
+        + getAttempts(): int
+        + getProposedCombination(int position): ProposedCombination
+        + getResult(int position): Result
+        + isWinner(): boolean
+        + isLooser(): boolean
+        + accept(ControllerVisitor controllerVisitor): void
+    }
+
+    class ResumeController {
+        ~ ResumeController(Game game, State state)
+        + resume(): void
+        + accept(ControllerVisitor controllerVisitor): void
+    }
+
+    class StartController {
+        ~ StartController(Game game, State state)
+        + accept(ControllerVisitor controllerVisitor): void
+    }
+
+}
+
+package mastermind.models {
+    class Game
+    class State
+}
+
+Logic *--> Game
+Logic o--> State
+
+ControllerVisitor <|-- Controller
+Controller <|--- StartController
+Controller <|--- ProposalController
+Controller <|--- ResumeController
+Logic *---> StartController
+Logic *---> ProposalController
+Logic *---> ResumeController
+
+@enduml

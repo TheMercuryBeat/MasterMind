@@ -1,0 +1,189 @@
+@startuml
+
+package mastermind.controllers {
+    interface ControllerVisitor
+    abstract class Controller
+    class StartController
+    class ProposalController
+    class ResumeController
+}
+
+package mastermind.views {
+
+    abstract class AbstractView{
+        + {abstract} void interact(Controller controller)
+    }
+
+    class MessageView{
+        + {static} TURN: Message
+        + {static} SECRET: Message
+        + {static} RESUME: Message
+        + {static} RESULT: Message
+        + {static} PROPOSED_COMBINATION: Message
+        + {static} TITLE: Message
+        + {static} WINNER: Message
+        + {static} LOOSER: Message
+        - message: String
+        - Message(String)
+        + {static} valueOf(String): Message
+        ~ getMessage(): String
+    }
+}
+
+package mastermind.views.console {
+
+    class View {
+        - final StartView startView;
+        - final ProposalView proposalView;
+        - final ResumeView resumeView;
+        + View()
+        + interact(Controller controller): void
+        + visit(StartController startController): void
+        + visit(ProposalController proposalController): void
+        + visit(ResumeController resumeController): void
+    }
+
+    class ColorView{
+        - {static} final char[] INITIALS
+        - final Color color
+        ~ ColorView(Color color)
+        ~ {static} allInitials(): String
+        + {static} getInstance(char character): Color
+        + write(): void
+    }
+
+    class ErrorView{
+        - {static} final String[] MESSAGES
+        - final Error error;
+        ~ ErrorView(Error error)
+        + writeln(): void
+    }
+
+     class ProposalView{
+        - final SecretCombinationView secretCombinationView
+        ~ ProposalView()
+        ~ interact(ProposalController proposalController): void
+    }
+
+    class ProposedCombinationView{
+        ~ ProposedCombinationView()
+        ~ write(int[]): void
+        ~ read(): int[]
+    }
+
+    class ResultView{
+        - final Result result;
+        ~ ResultView()
+        ~ writeln(int[]): void
+    }
+
+    class ResumeView{
+        ~ ResumeView()
+        ~ interact(ResumeController resumeController): boolean
+    }
+
+    class SecretCombinationView{
+        ~ SecretCombinationView()
+        ~ writeln(int): void
+    }
+
+    class StartView{
+        ~ StartView()
+        ~ interact(StartController startController): void
+    }
+
+}
+
+package mastermind.models {
+    class ProposedCombination
+    class Result
+    class Color
+}
+
+package mastermind.utils {
+    class WithConsoleView
+    class YesNoDialog
+    class Error
+}
+
+
+Controller <|---- StartController
+Controller <|---- ProposalController
+Controller <|---- ResumeController
+
+ControllerVisitor <|---- StartController
+ControllerVisitor <|---- ProposalController
+ControllerVisitor <|---- ResumeController
+
+AbstractView <|---- View
+ControllerVisitor <|---- View
+
+WithConsoleView <|---- ColorView
+WithConsoleView <|---- ProposalView
+
+View *----> StartView
+View *----> ProposalView
+View *----> ResumeView
+View o----> Controller
+
+StartView *-----> StartController
+ProposalView *-----> ProposalController
+ResumeView *-----> ResumeController
+
+StartView ....> MessageView
+StartView ....> SecretCombinationView
+ProposalView .....> MessageView
+ProposalView .....> SecretCombinationView
+ProposalView .....> ProposedCombinationView
+ProposalView .....> ResultView
+ProposalView o------> ProposedCombination
+
+ResumeView ....> YesNoDialog
+
+ProposedCombinationView *----> ProposedCombination
+ProposedCombinationView *----> Color
+ProposedCombinationView *----> Error
+ProposedCombinationView ....> ColorView
+ProposedCombinationView ....> ErrorView
+
+SecretCombinationView ....> MessageView
+
+ResultView ...> MessageView
+ResultView *---> Result
+
+ErrorView ....> ColorView
+
+
+@enduml
+
+   mastermind.views.ErrorView ..> mastermind.views.ColorView
+
+    mastermind.utils.WithConsoleView <|-down- mastermind.views.ProposalView
+    mastermind.views.ProposalView ..> mastermind.models.Game
+    mastermind.views.ProposalView ..> mastermind.views.Message
+    mastermind.views.ProposalView ..> mastermind.views.ErrorView
+    mastermind.views.ProposalView ..> mastermind.views.SecretCombinationView
+    mastermind.views.ProposalView ..> mastermind.views.ProposedCombinationView
+    mastermind.views.ProposalView ..> mastermind.views.ResultView
+
+    mastermind.utils.WithConsoleView <|-down- mastermind.views.ProposedCombinationView
+    mastermind.views.ProposedCombinationView..> mastermind.views.Message
+    mastermind.views.ProposedCombinationView..> mastermind.views.ColorView
+
+    mastermind.utils.WithConsoleView <|-down- mastermind.views.ResultView
+    mastermind.views.ResultView..> mastermind.views.Message
+
+    mastermind.views.ResumeView ..> mastermind.models.Game
+    mastermind.views.ResumeView..> mastermind.views.Message
+
+    mastermind.utils.WithConsoleView <|-down- mastermind.views.SecretCombinationView
+    mastermind.views.SecretCombinationView..> mastermind.views.Message
+
+    mastermind.utils.WithConsoleView <|-down- mastermind.views.StartView
+    mastermind.views.StartView ..> mastermind.models.Game
+    mastermind.views.StartView..> mastermind.views.Message
+
+    mastermind.views.View *-down-> mastermind.views.ProposalView
+    mastermind.views.View *-down-> mastermind.views.StartView
+    mastermind.views.View *-down-> mastermind.models.Game
+    mastermind.views.View *-down-> mastermind.views.ResumeView
