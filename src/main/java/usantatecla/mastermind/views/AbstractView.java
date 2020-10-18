@@ -1,16 +1,13 @@
 package usantatecla.mastermind.views;
 
-import usantatecla.mastermind.controllers.ProposalController;
-import usantatecla.mastermind.controllers.ResumeController;
+import usantatecla.mastermind.controllers.Logic;
 
 public abstract class AbstractView {
 
-    protected ProposalController proposalController;
-    protected ResumeController resumeController;
+    protected Logic logic;
 
-    public AbstractView(ProposalController proposalController, ResumeController resumeController) {
-        this.proposalController = proposalController;
-        this.resumeController = resumeController;
+    public AbstractView(Logic logic) {
+        this.logic = logic;
     }
 
     public void interact() {

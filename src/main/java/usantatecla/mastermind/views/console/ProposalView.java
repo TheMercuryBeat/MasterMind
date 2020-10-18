@@ -1,17 +1,17 @@
 package usantatecla.mastermind.views.console;
 
-import usantatecla.mastermind.controllers.ProposalController;
+import usantatecla.mastermind.controllers.LogicProposal;
 import usantatecla.mastermind.models.ProposedCombination;
 import usantatecla.mastermind.views.MessageView;
 import usantatecla.utils.WithConsoleView;
 
 class ProposalView extends WithConsoleView {
 
-    private final ProposalController proposalController;
+    private final LogicProposal logicProposal;
     private final SecretCombinationView secretCombinationView;
 
-    ProposalView(ProposalController proposalController) {
-        this.proposalController = proposalController;
+    public ProposalView(LogicProposal logicProposal) {
+        this.logicProposal = logicProposal;
         this.secretCombinationView = new SecretCombinationView();
     }
 
@@ -19,18 +19,18 @@ class ProposalView extends WithConsoleView {
         ProposedCombination proposedCombination = new ProposedCombination();
         ProposedCombinationView proposedCombinationView = new ProposedCombinationView(proposedCombination);
         proposedCombinationView.read();
-        this.proposalController.addProposedCombination(proposedCombination);
+        this.logicProposal.addProposedCombination(proposedCombination);
         this.console.writeln();
-        MessageView.ATTEMPTS.writeln(this.proposalController.getAttempts());
+        MessageView.ATTEMPTS.writeln(this.logicProposal.getAttempts());
         this.secretCombinationView.writeln();
-        for (int i = 0; i < this.proposalController.getAttempts(); i++) {
-            new ProposedCombinationView(this.proposalController.getProposedCombination(i)).write();
-            new ResultView(this.proposalController.getResult(i)).writeln();
+        for (int i = 0; i < this.logicProposal.getAttempts(); i++) {
+            new ProposedCombinationView(this.logicProposal.getProposedCombination(i)).write();
+            new ResultView(this.logicProposal.getResult(i)).writeln();
         }
-        if (this.proposalController.isWinner()) {
+        if (this.logicProposal.isWinner()) {
             MessageView.WINNER.writeln();
             return true;
-        } else if (this.proposalController.isLooser()) {
+        } else if (this.logicProposal.isLooser()) {
             MessageView.LOOSER.writeln();
             return true;
         }

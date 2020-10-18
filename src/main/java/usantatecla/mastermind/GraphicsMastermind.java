@@ -1,15 +1,13 @@
 package usantatecla.mastermind;
 
-import usantatecla.mastermind.controllers.ProposalController;
-import usantatecla.mastermind.controllers.ResumeController;
+import usantatecla.mastermind.controllers.Logic;
 import usantatecla.mastermind.views.AbstractView;
 import usantatecla.mastermind.views.graphics.View;
 
 public class GraphicsMastermind extends Mastermind {
 
-    protected AbstractView createView(ProposalController proposalController, ResumeController resumeController) {
-
-        return new View(proposalController, resumeController);
+    protected AbstractView createView(Logic logic) {
+        return new View(logic);
     }
 
     public static void main(String[] args) {
