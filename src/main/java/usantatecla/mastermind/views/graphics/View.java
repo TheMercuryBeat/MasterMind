@@ -1,9 +1,9 @@
 package usantatecla.mastermind.views.graphics;
 
-import usantatecla.mastermind.controllers.Controller;
+import usantatecla.mastermind.controllers.*;
 import usantatecla.mastermind.views.AbstractView;
 
-public class View extends AbstractView {
+public class View extends AbstractView implements ControllerVisitor {
 
     private final StartView startView;
     private final ProposalView proposalView;
@@ -15,7 +15,16 @@ public class View extends AbstractView {
         this.resumeView = new ResumeView();
     }
 
+    @Override
     public void interact(Controller controller) {
+    }
 
+    public void visit(StartController startController) {
+    }
+
+    public void visit(ProposalController proposalController) {
+    }
+
+    public void visit(ResumeController resumeController) {
     }
 }

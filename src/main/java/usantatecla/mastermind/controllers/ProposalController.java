@@ -34,4 +34,8 @@ public class ProposalController extends Controller {
     public boolean isLooser() {
         return this.game.isLooser();
     }
+
+    public void accept(ControllerVisitor controllerVisitor) {
+        controllerVisitor.visit(this);
+    }
 }

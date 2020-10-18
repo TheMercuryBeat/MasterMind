@@ -1,12 +1,9 @@
 package usantatecla.mastermind.views.console;
 
-import usantatecla.mastermind.controllers.Controller;
-import usantatecla.mastermind.controllers.ProposalController;
-import usantatecla.mastermind.controllers.ResumeController;
-import usantatecla.mastermind.controllers.StartController;
+import usantatecla.mastermind.controllers.*;
 import usantatecla.mastermind.views.AbstractView;
 
-public class View extends AbstractView {
+public class View extends AbstractView implements ControllerVisitor {
 
     private final StartView startView;
     private final ProposalView proposalView;
@@ -20,12 +17,18 @@ public class View extends AbstractView {
 
     @Override
     public void interact(Controller controller) {
-        if (controller instanceof StartController) {
-            this.startView.interact((StartController) controller);
-        } else if (controller instanceof ProposalController) {
-            this.proposalView.interact((ProposalController) controller);
-        } else {
-            this.resumeView.interact((ResumeController) controller);
-        }
+        controller.accept(this);
+    }
+
+    public void visit(StartController startController) {
+        this.startView.interact(startController);
+    }
+
+    public void visit(ProposalController proposalController) {
+        this.proposalView.interact(proposalController);
+    }
+
+    public void visit(ResumeController resumeController) {
+        this.resumeView.interact(resumeController);
     }
 }
