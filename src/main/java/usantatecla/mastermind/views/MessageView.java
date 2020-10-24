@@ -10,12 +10,19 @@ public enum MessageView {
 	PROPOSED_COMBINATION("Propose a combination: "),
 	TITLE("----- MASTERMIND -----"),
 	WINNER("You've won!!! ;-)"),
-	LOOSER("You've lost!!! :-(");
+	LOOSER("You've lost!!! :-("),
+	PROPOSAL_COMMAND("Do a propose"),
+	UNDO_COMMAND("Undo previous propose"),
+	REDO_COMMAND("Redo previous propose");
 
 	private final String message;
 
 	MessageView(String message) {
 		this.message = message;
+	}
+
+	public String getMessage() {
+		return message;
 	}
 
 	public void write() {

@@ -16,7 +16,7 @@ public class View extends AbstractView implements ControllerVisitor {
     }
 
     @Override
-    public void interact(Controller controller) {
+    public void interact(AcceptorController acceptorController) {
     }
 
     public void visit(StartController startController) {
