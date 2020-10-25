@@ -6,7 +6,7 @@ import java.util.List;
 class GameRegistry {
 
     private final Game game;
-    private List<GameVersion> gameVersions;
+    private List<Game.GameVersion> gameVersions;
     private int firstPrevious;
 
     GameRegistry(Game game) {

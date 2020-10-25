@@ -58,4 +58,28 @@ public class Game {
         this.attempts = gameVersion.getAttempts();
     }
 
+    static class GameVersion {
+
+        private final List<ProposedCombination> proposedCombinations;
+        private final List<Result> results;
+        private final int attempts;
+
+        GameVersion(List<ProposedCombination> proposedCombinations, List<Result> results, int attempts) {
+            this.proposedCombinations = new ArrayList<>(proposedCombinations);
+            this.results = new ArrayList<>(results);
+            this.attempts = attempts;
+        }
+
+        private List<ProposedCombination> getProposedCombinations() {
+            return proposedCombinations;
+        }
+
+        private List<Result> getResults() {
+            return results;
+        }
+
+        private int getAttempts() {
+            return attempts;
+        }
+    }
 }
