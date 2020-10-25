@@ -3,7 +3,7 @@ package usantatecla.mastermind.views.console;
 import usantatecla.mastermind.controllers.ProposalController;
 import usantatecla.utils.Command;
 
-public abstract class AbstractCommand implements Command {
+abstract class AbstractCommand implements Command {
 
     protected String name;
     protected ProposalController proposalController;

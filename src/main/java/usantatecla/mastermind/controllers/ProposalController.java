@@ -10,7 +10,7 @@ public class ProposalController extends Controller implements AcceptorController
     private final UndoController undoController;
     private final RedoController redoController;
 
-    public ProposalController(Session session) {
+    ProposalController(Session session) {
         super(session);
         this.actionController = new ActionController(this.session);
         this.undoController = new UndoController(this.session);

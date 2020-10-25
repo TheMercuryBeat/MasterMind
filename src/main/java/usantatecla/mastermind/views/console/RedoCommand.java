@@ -4,7 +4,7 @@ import usantatecla.mastermind.controllers.ProposalController;
 
 import static usantatecla.mastermind.views.MessageView.REDO_COMMAND;
 
-public class RedoCommand extends AbstractCommand {
+class RedoCommand extends AbstractCommand {
 
     public RedoCommand(ProposalController proposalController) {
         super(REDO_COMMAND.getMessage(), proposalController);

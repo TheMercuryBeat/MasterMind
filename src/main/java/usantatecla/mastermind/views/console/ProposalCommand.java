@@ -5,7 +5,7 @@ import usantatecla.mastermind.models.ProposedCombination;
 
 import static usantatecla.mastermind.views.MessageView.PROPOSAL_COMMAND;
 
-public class ProposalCommand extends AbstractCommand {
+class ProposalCommand extends AbstractCommand {
 
     public ProposalCommand(ProposalController proposalController) {
         super(PROPOSAL_COMMAND.getMessage(), proposalController);

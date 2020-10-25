@@ -12,7 +12,7 @@ public class UndoController extends Controller {
         this.session.undo();
     }
 
-    public boolean isUndoable() {
+    boolean isUndoable() {
         return this.session.isUndoable();
     }
 }

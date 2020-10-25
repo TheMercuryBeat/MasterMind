@@ -11,48 +11,48 @@ public class Game {
     private List<Result> results;
     private int attempts;
 
-    public Game() {
+    Game() {
         this.clear();
     }
 
-    public void clear() {
+    void clear() {
         this.secretCombination = new SecretCombination();
         this.proposedCombinations = new ArrayList<>();
         this.results = new ArrayList<>();
         this.attempts = 0;
     }
 
-    public void addProposedCombination(ProposedCombination proposedCombination) {
+    void addProposedCombination(ProposedCombination proposedCombination) {
         this.proposedCombinations.add(proposedCombination);
         this.results.add(this.secretCombination.getResult(proposedCombination));
         this.attempts++;
     }
 
-    public boolean isLooser() {
+    boolean isLooser() {
         return this.attempts == Game.MAX_LONG;
     }
 
-    public boolean isWinner() {
+    boolean isWinner() {
         return this.results.get(this.attempts - 1).isWinner();
     }
 
-    public int getAttempts() {
+    int getAttempts() {
         return this.attempts;
     }
 
-    public ProposedCombination getProposedCombination(int position) {
+    ProposedCombination getProposedCombination(int position) {
         return this.proposedCombinations.get(position);
     }
 
-    public Result getResult(int position) {
+    Result getResult(int position) {
         return this.results.get(position);
     }
 
-    public GameVersion createGameVersion() {
+    GameVersion createGameVersion() {
         return new GameVersion(this.proposedCombinations, this.results, this.attempts);
     }
 
-    public void setGameVersion(GameVersion gameVersion) {
+    void setGameVersion(GameVersion gameVersion) {
         this.proposedCombinations = gameVersion.getProposedCombinations();
         this.results = gameVersion.getResults();
         this.attempts = gameVersion.getAttempts();

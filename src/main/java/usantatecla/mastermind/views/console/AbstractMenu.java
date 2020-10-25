@@ -7,7 +7,7 @@ import usantatecla.utils.Console;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class AbstractMenu {
+abstract class AbstractMenu {
 
     private static final String TITLE_OPTION = "----- Choose one option -----";
     private final List<Command> commands;

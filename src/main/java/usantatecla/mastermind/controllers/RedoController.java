@@ -12,7 +12,7 @@ public class RedoController extends Controller {
         this.session.redo();
     }
 
-    public boolean isRedoable() {
+    boolean isRedoable() {
         return this.session.isRedoable();
     }
 }

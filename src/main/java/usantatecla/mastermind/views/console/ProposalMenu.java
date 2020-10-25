@@ -2,7 +2,7 @@ package usantatecla.mastermind.views.console;
 
 import usantatecla.mastermind.controllers.ProposalController;
 
-public class ProposalMenu extends AbstractMenu {
+class ProposalMenu extends AbstractMenu {
 
     ProposalMenu(ProposalController proposalController) {
         this.addCommand(new ProposalCommand(proposalController));
