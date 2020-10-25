@@ -7,13 +7,6 @@ public class ProposedCombination extends Combination {
     public ProposedCombination() {
     }
 
-    public ProposedCombination(ProposedCombination proposedCombination) {
-        this();
-        for (Color color : proposedCombination.getColors()) {
-            this.getColors().add(color);
-        }
-    }
-
     boolean contains(Color color, int position) {
         return this.colors.get(position) == color;
     }
@@ -31,7 +24,4 @@ public class ProposedCombination extends Combination {
         return this.colors;
     }
 
-    public ProposedCombination copy() {
-        return new ProposedCombination(this);
-    }
 }

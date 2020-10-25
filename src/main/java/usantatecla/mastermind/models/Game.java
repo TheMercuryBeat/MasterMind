@@ -6,13 +6,9 @@ import java.util.List;
 public class Game {
 
     private static final int MAX_LONG = 10;
-
     private SecretCombination secretCombination;
-
     private List<ProposedCombination> proposedCombinations;
-
     private List<Result> results;
-
     private int attempts;
 
     public Game() {
@@ -50,6 +46,16 @@ public class Game {
 
     public Result getResult(int position) {
         return this.results.get(position);
+    }
+
+    public GameVersion createGameVersion() {
+        return new GameVersion(this.proposedCombinations, this.results, this.attempts);
+    }
+
+    public void setGameVersion(GameVersion gameVersion) {
+        this.proposedCombinations = gameVersion.getProposedCombinations();
+        this.results = gameVersion.getResults();
+        this.attempts = gameVersion.getAttempts();
     }
 
 }

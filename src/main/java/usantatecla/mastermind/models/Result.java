@@ -25,7 +25,4 @@ public class Result {
         return this.whites;
     }
 
-    public Result copy() {
-        return new Result(this.getBlacks(), this.getWhites());
-    }
 }

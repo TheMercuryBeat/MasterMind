@@ -12,7 +12,7 @@ public class UndoCommand extends AbstractCommand {
 
     @Override
     public void execute() {
-
+        this.proposalController.undo();
     }
 
     @Override

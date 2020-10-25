@@ -41,7 +41,7 @@ public class ProposalController extends Controller implements AcceptorController
         return this.actionController.getResult(position);
     }
 
-    void undo() {
+    public void undo() {
         this.undoController.undo();
     }
 
@@ -49,7 +49,7 @@ public class ProposalController extends Controller implements AcceptorController
         return this.undoController.isUndoable();
     }
 
-    void redo() {
+    public void redo() {
         this.redoController.redo();
     }
 

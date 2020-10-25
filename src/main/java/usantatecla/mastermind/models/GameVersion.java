@@ -1,23 +1,26 @@
 package usantatecla.mastermind.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 class GameVersion {
 
-    private final ProposedCombination proposedCombination;
-    private final Result result;
+    private final List<ProposedCombination> proposedCombinations;
+    private final List<Result> results;
     private final int attempts;
 
-    GameVersion(ProposedCombination proposedCombination, Result result, int attempts) {
-        this.proposedCombination = proposedCombination.copy();
-        this.result = result.copy();
+    GameVersion(List<ProposedCombination> proposedCombinations, List<Result> results, int attempts) {
+        this.proposedCombinations = new ArrayList<>(proposedCombinations);
+        this.results = new ArrayList<>(results);
         this.attempts = attempts;
     }
 
-    public ProposedCombination getProposedCombination() {
-        return proposedCombination;
+    public List<ProposedCombination> getProposedCombinations() {
+        return proposedCombinations;
     }
 
-    public Result getResult() {
-        return result;
+    public List<Result> getResults() {
+        return results;
     }
 
     public int getAttempts() {

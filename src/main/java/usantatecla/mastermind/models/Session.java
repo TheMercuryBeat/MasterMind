@@ -20,6 +20,7 @@ public class Session {
 
     public void addProposedCombination(ProposedCombination proposedCombination) {
         this.game.addProposedCombination(proposedCombination);
+        this.gameRegistry.registry();
     }
 
     public boolean isLooser() {

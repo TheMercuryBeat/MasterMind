@@ -12,11 +12,11 @@ public class RedoCommand extends AbstractCommand {
 
     @Override
     public void execute() {
-
+        this.proposalController.redo();
     }
 
     @Override
     public boolean isActive() {
-        return proposalController.isUndoable();
+        return proposalController.isRedoable();
     }
 }
