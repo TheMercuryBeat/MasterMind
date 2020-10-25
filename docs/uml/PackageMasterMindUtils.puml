@@ -35,4 +35,18 @@ class  mastermind.utils.YesNoDialog{
     }
 mastermind.utils.WithConsoleView <|-down- mastermind.utils.YesNoDialog
 
+interface mastermind.utils.Command {
+    execute(): void
+    isActive(): boolean
+    getName(): String
+}
+
+class mastermind.utils.ClosedInterval {
+    - final int min
+    - final int max
+    + ClosedInterval(int min, int max)
+    + isIncluded(int value): boolean
+    + toString(): String
+}
+
 @enduml

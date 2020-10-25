@@ -31,26 +31,40 @@
     }
     
     class  mastermind.models.Game{
-        + {static} NO_ERROR: int
-        - {static} MAX_LONG: int
-        - secretCombination: SecretCombination
-        - proposedCombinations: List<ProposedCombination>
-        - results: List<Result>
-        - turn: int
-        + Game()
-        + clear(): void
-        + proposeCombination(ProposedCombination): void
-        + getWidth(): int
-        + isLooser(): boolean
-        + getTurn(): int
-        + isWinner(): boolean
-        + getCodes(): int[][][]
+        - {static} final int MAX_LONG = 10
+        - SecretCombination secretCombination
+        - List<ProposedCombination> proposedCombinations
+        - List<Result> results
+        - int attempts
+        ~ Game()
+        ~ clear(): void
+        ~ addProposedCombination(ProposedCombination proposedCombination): void
+        ~ isLooser(): boolean
+        ~ isWinner(): boolean
+        ~ getAttempts(): int
+        ~ getProposedCombination(int position): ProposedCombination
+        ~ getResult(int position): Result
+        ~ createGameVersion(): GameVersion
+        ~ setGameVersion(GameVersion gameVersion): void
     }
+
+     class mastermind.models.GameVersion{
+        - final List<ProposedCombination> proposedCombinations
+        - final List<Result> results
+        - final int attempts
+
+        ~ GameVersion(List<ProposedCombination> proposedCombinations, List<Result> results, int attempts)
+        - getProposedCombinations(): List<ProposedCombination>
+        - getResults(): List<Result>
+        - getAttempts(): int
+     }
+
     mastermind.models.Game *-down-> java.util.List
     mastermind.models.Game *-down-> mastermind.models.SecretCombination
     mastermind.models.Game *-down-> mastermind.models.Result
     mastermind.models.Game --> mastermind.models.ProposedCombination
-    
+    mastermind.models.Game +--> mastermind.models.GameVersion
+
     class  mastermind.models.ProposedCombination{
         + ProposedCombination()
         ~ contains(Color): boolean
@@ -80,10 +94,10 @@
 
     class mastermind.models.State{
         - StateValue stateValue;
-        + State()
-        + void reset()
-        + void next()
-        + StateValue getValueState()
+        ~ State()
+        ~ void reset()
+        ~ void next()
+        ~ StateValue getValueState()
     }
 
     enum mastermind.models.StateValue{
@@ -94,5 +108,46 @@
     }
 
     mastermind.models.State *--> mastermind.models.StateValue
+
+    class mastermind.models.GameRegistry {
+        - final Game game
+        - List<Game.GameVersion> gameVersions
+        - int firstPrevious
+        ~ GameRegistry(Game game)
+        ~ registry(): void
+        ~ reset(): void
+        ~ undo(): void
+        ~ redo(): void
+        ~ isUndoable(): boolean
+        ~ isRedoable(): boolean
+    }
+
+    mastermind.models.GameRegistry *--> mastermind.models.Game
+    mastermind.models.GameRegistry ...> mastermind.models.GameVersion
+
+    class mastermind.models.Session {
+        - final Game game
+        - final GameRegistry gameRegistry
+        - final State state
+        + Session()
+        + clear(): void
+        + addProposedCombination(ProposedCombination proposedCombination): void
+        + isLooser(): boolean
+        + isWinner(): boolean
+        + getAttempts(): int
+        + getProposedCombination(int position): ProposedCombination
+        + getResult(int position): Result
+        + undo(): void
+        + redo(): void
+        + isUndoable(): boolean
+        + isRedoable(): boolean
+        + next(): void
+        + getValueState(): StateValue
+    }
+
+    mastermind.models.Session *---> mastermind.models.Game
+    mastermind.models.Session *---> mastermind.models.GameRegistry
+    mastermind.models.Session *---> mastermind.models.State
+    mastermind.models.Session ...> mastermind.models.StateValue
 
 @enduml

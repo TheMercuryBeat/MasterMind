@@ -3,38 +3,46 @@
 
 package mastermind.controllers {
 
-  interface ControllerVisitor {
+    interface ControllerVisitor {
        visit(StartController startController): void
        visit(ProposalController proposalController): void
        visit(ResumeController resumeController): void
     }
 
-   abstract class Controller {
-       # Game game
-       # State state
-       ~ Controller(Game game, State state)
-       + next(): void
-       + {abstract} accept(ControllerVisitor controllerVisitor): void
-   }
+    interface AcceptorController {
+        accept(ControllerVisitor controllerVisitor): void
+    }
+
+    abstract class Controller {
+        # Session session
+        ~ Controller(Session session)
+        + void next(): void
+    }
 
     class Logic {
-        - final Game game
-        - final State state
+        - final Session session
         - final Map<StateValue, Controller> controllers
         + Logic()
-        + Controller getController()
+        + getController(): AcceptorController
     }
 
     class ProposalController {
-        ~ ProposalController(Game game, State state)
+        - final ActionController actionController
+        - final UndoController undoController
+        - final RedoController redoController
+        ~ ProposalController(Session session)
         + addProposedCombination(ProposedCombination proposedCombination): void
+        + isLooser(): boolean
+        + isWinner(): boolean
         + getAttempts(): int
         + getProposedCombination(int position): ProposedCombination
         + getResult(int position): Result
-        + isWinner(): boolean
-        + isLooser(): boolean
+        + undo(): void
+        + isUndoable(): boolean
+        + redo(): void
+        + isRedoable(): boolean
         + accept(ControllerVisitor controllerVisitor): void
-    }
+     }
 
     class ResumeController {
         ~ ResumeController(Game game, State state)
@@ -47,22 +55,53 @@ package mastermind.controllers {
         + accept(ControllerVisitor controllerVisitor): void
     }
 
+    class ActionController {
+        ~ ActionController(Session session)
+        ~ addProposedCombination(ProposedCombination proposedCombination): void
+        ~ isLooser(): boolean
+        ~ isWinner(): boolean
+        ~ getAttempts(): int
+        ~ getProposedCombination(int position): ProposedCombination
+        ~ getResult(int position): Result
+    }
+
+    class UndoController {
+        ~ UndoController(Session session)
+        ~ undo(): void
+        ~ isUndoable(): boolean
+    }
+
+    class RedoController {
+        ~ RedoController(Session session)
+        ~ void redo()
+        ~ boolean isRedoable()
+    }
+
 }
 
 package mastermind.models {
-    class Game
-    class State
+    class Session
 }
 
-Logic *--> Game
-Logic o--> State
+AcceptorController <|---- StartController
+AcceptorController <|---- ProposalController
+AcceptorController <|---- ResumeController
 
-ControllerVisitor <|-- Controller
 Controller <|--- StartController
 Controller <|--- ProposalController
+Controller <|--- ActionController
+Controller <|--- UndoController
+Controller <|--- RedoController
 Controller <|--- ResumeController
+
+StartController *---> ControllerVisitor
+ProposalController *---> ControllerVisitor
+ResumeController *---> ControllerVisitor
+
+Logic *--> Session
 Logic *---> StartController
 Logic *---> ProposalController
 Logic *---> ResumeController
+Logic o---> AcceptorController
 
 @enduml
