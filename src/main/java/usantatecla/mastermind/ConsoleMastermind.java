@@ -8,6 +8,10 @@ public class ConsoleMastermind extends Mastermind {
         return new View();
     }
 
+    protected boolean isStandalone() {
+        return true;
+    }
+
     public static void main(String[] args) {
         new ConsoleMastermind().play();
     }

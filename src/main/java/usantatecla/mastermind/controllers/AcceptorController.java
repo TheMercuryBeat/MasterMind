@@ -1,7 +1,17 @@
 package usantatecla.mastermind.controllers;
 
-public interface AcceptorController {
+import usantatecla.mastermind.models.Session;
+import usantatecla.utils.TCPIP;
 
-    void accept(ControllerVisitor controllerVisitor);
+public abstract class AcceptorController extends Controller {
+
+    protected TCPIP tcpip;
+
+    AcceptorController(Session session, TCPIP tcpip) {
+        super(session);
+        this.tcpip = tcpip;
+    }
+
+    public abstract void accept(ControllerVisitor controllerVisitor);
 
 }

@@ -1,15 +1,20 @@
 package usantatecla.mastermind.models;
 
+import usantatecla.mastermind.controllers.FrameType;
+import usantatecla.utils.TCPIP;
+
 public class Session {
 
     private final Game game;
     private final GameRegistry gameRegistry;
     private final State state;
+    private final TCPIP tcpip;
 
-    public Session() {
+    public Session(TCPIP tcpip) {
         this.game = new Game();
         this.gameRegistry = new GameRegistry(this.game);
         this.state = new State();
+        this.tcpip = tcpip;
     }
 
     public void clear() {
@@ -64,7 +69,11 @@ public class Session {
     }
 
     public StateValue getValueState() {
-        return this.state.getValueState();
+        if (this.tcpip == null) {
+            return this.state.getValueState();
+        }
+        this.tcpip.send(FrameType.STATE.name());
+        return StateValue.values()[this.tcpip.receiveInt()];
     }
 
 }

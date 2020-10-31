@@ -10,7 +10,7 @@ public abstract class Mastermind {
     private final AbstractView abstractView;
 
     protected Mastermind() {
-        this.logic = new Logic();
+        this.logic = new Logic(this.isStandalone());
         this.abstractView = this.createView();
     }
 
@@ -22,9 +22,14 @@ public abstract class Mastermind {
                 this.abstractView.interact(controller);
             }
         } while (controller != null);
+
+        if (!this.isStandalone()) {
+            this.logic.close();
+        }
     }
 
     protected abstract AbstractView createView();
 
+    protected abstract boolean isStandalone();
 
 }
