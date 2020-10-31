@@ -2,7 +2,6 @@ package usantatecla.mastermind.distributed;
 
 
 import usantatecla.mastermind.controllers.AcceptorController;
-import usantatecla.utils.TCPIP;
 
 public abstract class Dispatcher {
 

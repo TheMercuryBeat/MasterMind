@@ -1,7 +1,7 @@
 package usantatecla.mastermind.controllers;
 
+import usantatecla.mastermind.distributed.TCPIP;
 import usantatecla.mastermind.models.Session;
-import usantatecla.utils.TCPIP;
 
 public abstract class AcceptorController extends Controller {
 

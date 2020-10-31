@@ -1,23 +1,20 @@
 package usantatecla.mastermind.controllers;
 
 public enum FrameType {
-    MARTERMIND,
     START,
     STATE,
+    ADD_PROPOSAL,
+    GET_PROPOSAL,
+    GET_ATTEMPTS,
+    GET_RESULT,
     UNDO,
     REDO,
     UNDOABLE,
     REDOABLE,
-    ERRORS_PUT,
     NEXT_STATE,
-    PROPOSAL,
     RESUME,
-    NEW_GAME,
     LOOSER,
     WINNER,
-    GET_ATTEMPTS,
-    GET_PROPOSAL,
-    GET_RESULT,
     CLOSE;
 
     public static FrameType parser(String string) {

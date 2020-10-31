@@ -1,7 +1,6 @@
 package usantatecla.mastermind.distributed;
 
 import usantatecla.mastermind.controllers.FrameType;
-import usantatecla.utils.TCPIP;
 
 import java.util.HashMap;
 import java.util.Map;

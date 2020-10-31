@@ -1,7 +1,7 @@
 package usantatecla.mastermind.models;
 
 import usantatecla.mastermind.controllers.FrameType;
-import usantatecla.utils.TCPIP;
+import usantatecla.mastermind.distributed.TCPIP;
 
 public class Session {
 

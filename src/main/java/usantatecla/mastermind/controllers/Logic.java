@@ -1,8 +1,8 @@
 package usantatecla.mastermind.controllers;
 
+import usantatecla.mastermind.distributed.TCPIP;
 import usantatecla.mastermind.models.Session;
 import usantatecla.mastermind.models.StateValue;
-import usantatecla.utils.TCPIP;
 
 import java.util.HashMap;
 import java.util.Map;

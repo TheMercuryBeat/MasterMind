@@ -1,10 +1,9 @@
 package usantatecla.mastermind.controllers;
 
-import usantatecla.mastermind.models.Color;
+import usantatecla.mastermind.distributed.TCPIP;
 import usantatecla.mastermind.models.ProposedCombination;
 import usantatecla.mastermind.models.Result;
 import usantatecla.mastermind.models.Session;
-import usantatecla.utils.TCPIP;
 
 public class ProposalController extends AcceptorController {
 
@@ -23,10 +22,8 @@ public class ProposalController extends AcceptorController {
         if (this.tcpip == null) {
             this.actionController.addProposedCombination(proposedCombination);
         } else {
-            this.tcpip.send(FrameType.PROPOSAL.name());
-            for (Color color : proposedCombination.getColors()) {
-                this.tcpip.send(color.ordinal());
-            }
+            this.tcpip.send(FrameType.ADD_PROPOSAL.name());
+            this.tcpip.sendProposedCombination(proposedCombination);
         }
     }
 
@@ -58,21 +55,9 @@ public class ProposalController extends AcceptorController {
         if (this.tcpip == null) {
             return this.actionController.getProposedCombination(position);
         }
-
         this.tcpip.send(FrameType.GET_PROPOSAL.name());
         this.tcpip.send(position);
-
-        int c1 = this.tcpip.receiveInt();
-        int c2 = this.tcpip.receiveInt();
-        int c3 = this.tcpip.receiveInt();
-        int c4 = this.tcpip.receiveInt();
-
-        ProposedCombination proposedCombination = new ProposedCombination();
-        proposedCombination.getColors().add(Color.values()[c1]);
-        proposedCombination.getColors().add(Color.values()[c2]);
-        proposedCombination.getColors().add(Color.values()[c3]);
-        proposedCombination.getColors().add(Color.values()[c4]);
-        return proposedCombination;
+        return this.tcpip.receiveProposedCombination();
     }
 
     public Result getResult(int position) {

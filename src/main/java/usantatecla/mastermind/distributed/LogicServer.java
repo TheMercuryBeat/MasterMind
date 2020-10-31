@@ -12,9 +12,9 @@ public class LogicServer extends Logic {
 
     public void associateDispatchers(DispatcherPrototype dispatcherPrototype) {
         dispatcherPrototype.add(FrameType.START, new StartDispatcher(this.startController));
-        dispatcherPrototype.add(FrameType.PROPOSAL, new AddProposalCombinationDispatcher(this.proposalController));
+        dispatcherPrototype.add(FrameType.ADD_PROPOSAL, new AddProposalDispatcher(this.proposalController));
         dispatcherPrototype.add(FrameType.GET_RESULT, new ResultDispatcher(this.proposalController));
-        dispatcherPrototype.add(FrameType.GET_PROPOSAL, new GetProposalCombinationDispatcher(this.proposalController));
+        dispatcherPrototype.add(FrameType.GET_PROPOSAL, new GetProposalDispatcher(this.proposalController));
         dispatcherPrototype.add(FrameType.GET_ATTEMPTS, new AttemptsDispatcher(this.proposalController));
         dispatcherPrototype.add(FrameType.STATE, new StateDispatcher(this.proposalController));
         dispatcherPrototype.add(FrameType.UNDO, new UndoDispatcher(this.proposalController));
