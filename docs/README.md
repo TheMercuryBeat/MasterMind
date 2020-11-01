@@ -1,4 +1,4 @@
-# MasterMind - Solución mvp.pm.withComposite
+# MasterMind - Solución mvp.pv
 
 Diego Fernández Aceves - dfera10@gmail.com
 
