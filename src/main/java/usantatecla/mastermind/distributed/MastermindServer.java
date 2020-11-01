@@ -1,15 +1,13 @@
 package usantatecla.mastermind.distributed;
 
-public class MastermindServer {
+class MastermindServer {
 
     private final DispatcherPrototype dispatcherPrototype;
 
-    private final LogicServer logic;
-
     private MastermindServer() {
         this.dispatcherPrototype = new DispatcherPrototype();
-        this.logic = new LogicServer(true);
-        this.logic.associateDispatchers(this.dispatcherPrototype);
+        LogicServerImplementation logic = new LogicServerImplementation();
+        logic.associateDispatchers(this.dispatcherPrototype);
     }
 
     private void serve() {

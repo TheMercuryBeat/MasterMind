@@ -6,7 +6,7 @@ class StartView {
 
     void interact(StartController startController) {
         new SecretCombinationView().writeln();
-        startController.next();
+        startController.start();
     }
 
 }

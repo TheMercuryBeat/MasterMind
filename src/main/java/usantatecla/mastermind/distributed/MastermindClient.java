@@ -1,19 +1,19 @@
 package usantatecla.mastermind.distributed;
 
 import usantatecla.mastermind.Mastermind;
+import usantatecla.mastermind.controllers.Logic;
+import usantatecla.mastermind.distributed.proxy.LogicProxy;
 import usantatecla.mastermind.views.AbstractView;
 import usantatecla.mastermind.views.console.View;
 
-public class MastermindClient extends Mastermind {
+class MastermindClient extends Mastermind {
 
-    @Override
-    protected AbstractView createView() {
-        return new View();
+    protected Logic createLogic() {
+        return new LogicProxy();
     }
 
-    @Override
-    protected boolean isStandalone() {
-        return false;
+    protected AbstractView createView() {
+        return new View();
     }
 
     public static void main(String[] args) {

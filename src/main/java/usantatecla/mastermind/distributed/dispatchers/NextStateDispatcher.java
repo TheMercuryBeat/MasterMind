@@ -11,7 +11,7 @@ public class NextStateDispatcher extends Dispatcher {
 
     @Override
     public void dispatch() {
-        this.acceptorController.next();
+        ((ProposalController) this.acceptorController).next();
     }
 
 }

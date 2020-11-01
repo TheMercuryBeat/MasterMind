@@ -10,17 +10,17 @@ public class DispatcherPrototype {
     private final TCPIP tcpip;
     private final Map<FrameType, Dispatcher> dispatcherMap;
 
-    public DispatcherPrototype() {
+    DispatcherPrototype() {
         this.tcpip = TCPIP.createServerSocket();
         this.dispatcherMap = new HashMap<>();
     }
 
-    public void add(FrameType frameType, Dispatcher dispatcher) {
+    void add(FrameType frameType, Dispatcher dispatcher) {
         this.dispatcherMap.put(frameType, dispatcher);
         dispatcher.associate(this.tcpip);
     }
 
-    public void serve() {
+    void serve() {
         FrameType frameType;
         do {
             String string = this.tcpip.receiveLine();

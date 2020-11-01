@@ -5,18 +5,17 @@ import usantatecla.mastermind.controllers.AcceptorController;
 
 public abstract class Dispatcher {
 
-	protected AcceptorController acceptorController;
+    protected AcceptorController acceptorController;
+    protected TCPIP tcpip;
 
-	protected TCPIP tcpip;
+    public Dispatcher(AcceptorController acceptorController) {
+        this.acceptorController = acceptorController;
+    }
 
-	public Dispatcher(AcceptorController acceptorController) {
-		this.acceptorController = acceptorController;
-	}
+    public abstract void dispatch();
 
-	public abstract void dispatch();
-
-	public void associate(TCPIP tcpip) {
-		this.tcpip = tcpip;
-	}
+    public void associate(TCPIP tcpip) {
+        this.tcpip = tcpip;
+    }
 
 }

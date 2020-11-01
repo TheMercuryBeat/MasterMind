@@ -13,7 +13,9 @@ public class GetProposalDispatcher extends Dispatcher {
     @Override
     public void dispatch() {
         int position = this.tcpip.receiveInt();
-        ProposedCombination proposedCombination = ((ProposalController) this.acceptorController).getProposedCombination(position);
+        ProposedCombination proposedCombination =
+                ((ProposalController) this.acceptorController).getProposedCombination(position);
+
         this.tcpip.sendProposedCombination(proposedCombination);
     }
 

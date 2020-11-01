@@ -6,13 +6,13 @@ import usantatecla.mastermind.distributed.Dispatcher;
 
 public class RedoDispatcher extends Dispatcher {
 
-	public RedoDispatcher(ProposalController proposalController) {
-		super(proposalController);
-	}
+    public RedoDispatcher(ProposalController proposalController) {
+        super(proposalController);
+    }
 
-	@Override
-	public void dispatch() {
-		((ProposalController) this.acceptorController).redo();
-	}
+    @Override
+    public void dispatch() {
+        ((ProposalController) this.acceptorController).redo();
+    }
 
 }

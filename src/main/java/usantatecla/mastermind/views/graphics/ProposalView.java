@@ -1,6 +1,6 @@
 package usantatecla.mastermind.views.graphics;
 
-import usantatecla.mastermind.controllers.ProposalController;
+import usantatecla.mastermind.controllers.implementation.ProposalControllerImplementation;
 
 class ProposalView {
 
@@ -10,7 +10,7 @@ class ProposalView {
         this.secretCombinationView = new SecretCombinationView();
     }
 
-    void interact(ProposalController proposalController) {
+    void interact(ProposalControllerImplementation proposalController) {
         proposalController.next();
     }
 }

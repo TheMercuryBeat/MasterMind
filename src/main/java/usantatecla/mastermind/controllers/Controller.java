@@ -12,10 +12,6 @@ public abstract class Controller {
         this.session = session;
     }
 
-    public void next() {
-        this.session.next();
-    }
-
     public StateValue getValueState() {
         return this.session.getValueState();
     }

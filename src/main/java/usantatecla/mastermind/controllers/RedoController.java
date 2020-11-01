@@ -1,18 +1,22 @@
 package usantatecla.mastermind.controllers;
 
 import usantatecla.mastermind.models.Session;
+import usantatecla.mastermind.models.SessionImplementation;
 
 public class RedoController extends Controller {
 
-    RedoController(Session session) {
+    private final SessionImplementation sessionImplementation;
+
+    public RedoController(Session session) {
         super(session);
+        this.sessionImplementation = (SessionImplementation) session;
     }
 
-    void redo() {
-        this.session.redo();
+    public void redo() {
+        this.sessionImplementation.redo();
     }
 
-    boolean isRedoable() {
-        return this.session.isRedoable();
+    public boolean isRedoable() {
+        return this.sessionImplementation.isRedoable();
     }
 }
