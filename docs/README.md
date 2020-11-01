@@ -57,4 +57,4 @@ Modelo/Vista/Presentador con vista pasiva
 
 -   No hay concurrencia
 
-Last updated 2020-10-18
+Last updated 2020-10-31
