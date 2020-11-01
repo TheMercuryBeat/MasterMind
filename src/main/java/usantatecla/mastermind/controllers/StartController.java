@@ -1,15 +1,16 @@
 package usantatecla.mastermind.controllers;
 
 import usantatecla.mastermind.models.Session;
+import usantatecla.mastermind.views.StartView;
 
-public class StartController extends Controller implements AcceptorController {
+public class StartController extends Controller {
 
-    StartController(Session session) {
+    public StartController(Session session) {
         super(session);
     }
 
-    public void accept(ControllerVisitor controllerVisitor) {
-        controllerVisitor.visit(this);
+    public void control() {
+        new StartView().write();
+        this.session.next();
     }
-
 }

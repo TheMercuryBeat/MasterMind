@@ -1,4 +1,4 @@
-package usantatecla.mastermind.views.console;
+package usantatecla.mastermind.views;
 
 import usantatecla.mastermind.models.Error;
 import usantatecla.utils.WithConsoleView;
@@ -12,7 +12,7 @@ public class ErrorView extends WithConsoleView {
 
     private final Error error;
 
-    ErrorView(Error error) {
+    public ErrorView(Error error) {
         this.error = error;
     }
 

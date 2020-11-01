@@ -1,17 +1,16 @@
-package usantatecla.mastermind.views.console;
+package usantatecla.mastermind.views;
 
 import usantatecla.mastermind.models.Result;
-import usantatecla.mastermind.views.MessageView;
 
-class ResultView {
+public class ResultView {
 
     private final Result result;
 
-    ResultView(Result result) {
+    public ResultView(Result result) {
         this.result = result;
     }
 
-    void writeln() {
+    public void writeln() {
         MessageView.RESULT.writeln(this.result.getBlacks(), this.result.getWhites());
     }
 

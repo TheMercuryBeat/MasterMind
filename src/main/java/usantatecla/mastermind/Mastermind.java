@@ -1,30 +1,42 @@
 package usantatecla.mastermind;
 
-import usantatecla.mastermind.controllers.AcceptorController;
-import usantatecla.mastermind.controllers.Logic;
-import usantatecla.mastermind.views.AbstractView;
+import usantatecla.mastermind.controllers.Controller;
+import usantatecla.mastermind.controllers.ProposalController;
+import usantatecla.mastermind.controllers.ResumeController;
+import usantatecla.mastermind.controllers.StartController;
+import usantatecla.mastermind.models.Session;
+import usantatecla.mastermind.models.StateValue;
 
-public abstract class Mastermind {
+import java.util.HashMap;
+import java.util.Map;
 
-    private final Logic logic;
-    private final AbstractView abstractView;
+public class Mastermind {
 
-    protected Mastermind() {
-        this.logic = new Logic();
-        this.abstractView = this.createView();
+    private final Session session;
+    private final Map<StateValue, Controller> controllers;
+
+    Mastermind() {
+        this.session = new Session();
+        this.controllers = new HashMap<>();
+        this.controllers.put(StateValue.INITIAL, new StartController(this.session));
+        this.controllers.put(StateValue.PROPOSAL, new ProposalController(this.session));
+        this.controllers.put(StateValue.RESUME, new ResumeController(this.session));
+        this.controllers.put(StateValue.EXIT, null);
     }
 
-    protected void play() {
-        AcceptorController controller;
+    void play() {
+        Controller controller;
         do {
-            controller = this.logic.getController();
+            controller = this.controllers.get(this.session.getValueState());
             if (controller != null) {
-                this.abstractView.interact(controller);
+                controller.control();
             }
         } while (controller != null);
     }
 
-    protected abstract AbstractView createView();
+    public static void main(String[] args) {
+        new Mastermind().play();
+    }
 
 
 }

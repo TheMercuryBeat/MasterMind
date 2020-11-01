@@ -2,17 +2,20 @@ package usantatecla.mastermind.controllers;
 
 import usantatecla.mastermind.models.Session;
 
-public class RedoController extends Controller {
+class RedoController extends InGameController {
 
     RedoController(Session session) {
         super(session);
     }
 
-    void redo() {
+    @Override
+    protected void inGameControl() {
         this.session.redo();
     }
 
-    boolean isRedoable() {
+    @Override
+    public boolean isActive() {
         return this.session.isRedoable();
     }
+
 }
