@@ -30,7 +30,7 @@ Version 0.0.4
     - Distribución: StandAlone
     - Persistencia: No
  
-    ![MasterMind](https://github.com/TheMercuryBeat/MasterMind/blob/Cliente/Servidor/docs/images/300px-mastermind.jpg?raw=true)
+    ![MasterMind](https://github.com/TheMercuryBeat/MasterMind/blob/ClienteServidor/docs/images/300px-mastermind.jpg?raw=true)
  
 # Vista de Lógica/Diseño
 Modelo/Vista/Presentador con presentador del modelo
