@@ -13,8 +13,6 @@ Version 0.0.4
     * [Paquete mastermind.controllers](#Paquete-mastermindcontrollers)
     * [Paquete mastermind.models](#Paquete-mastermindmodels)
     * [Paquete mastermind.utils](#Paquete-mastermindutils)
- - [Calidad del Software](#Calidad-del-Software)
-    * [Diseño](#Diseño)
  - [Vista de Desarrollo/Implementación](#Vista-de-DesarrolloImplementación)
  - [Vista de Despliegue/Física](#Vista-de-DespliegueFísica)
  - [Vista de Procesos](#Vista-de-Procesos)
@@ -26,46 +24,34 @@ Version 0.0.4
     - Distribución: StandAlone
     - Persistencia: No
  
-    ![MasterMind](https://github.com/TheMercuryBeat/MasterMind/blob/mvp.pm.withComposite/docs/images/300px-mastermind.jpg?raw=true)
+    ![MasterMind](https://github.com/TheMercuryBeat/MasterMind/blob/mvp.pv/docs/images/300px-mastermind.jpg?raw=true)
  
 # Vista de Lógica/Diseño
-Modelo/Vista/Presentador con presentador del modelo
-
-* Patrón Command, para el menú
-
-* Patrón Composite, para multi-controladores
-
-* Patrón Memento, para la funcionalidad undo/redo
+Modelo/Vista/Presentador con vista pasiva
 
 ## Arquitectura
-![architecture](https://github.com/TheMercuryBeat/MasterMind/blob/mvp.pm.withComposite/docs/images/MasterMindArquitecture.png?raw=true)
+![architecture](https://github.com/TheMercuryBeat/MasterMind/blob/mvp.pv/docs/images/MasterMindArquitecture.png?raw=true)
 
 ## Paquete mastermind
-![mastermind](https://github.com/TheMercuryBeat/MasterMind/blob/mvp.pm.withComposite/docs/images/PackageMasterMind.png?raw=true)
+![mastermind](https://github.com/TheMercuryBeat/MasterMind/blob/mvp.pv/docs/images/PackageMasterMind.png?raw=true)
 
 ## Paquete mastermind.views
-![mastermind.views](https://github.com/TheMercuryBeat/MasterMind/blob/mvp.pm.withComposite/docs/images/PackageMasterMindViews.png?raw=true)
+![mastermind.views](https://github.com/TheMercuryBeat/MasterMind/blob/mvp.pv/docs/images/PackageMasterMindViews.png?raw=true)
 
 ## Paquete mastermind.controllers
-![mastermind.controllers](https://github.com/TheMercuryBeat/MasterMind/blob/mvp.pm.withComposite/docs/images/PackageMasterMindControllers.png?raw=true)
+![mastermind.controllers](https://github.com/TheMercuryBeat/MasterMind/blob/mvp.pv/docs/images/PackageMasterMindControllers.png?raw=true)
 
 ## Paquete mastermind.models
-![mastermind.models](https://github.com/TheMercuryBeat/MasterMind/blob/mvp.pm.withComposite/docs/images/PackageMasterMindModels.png?raw=true)
+![mastermind.models](https://github.com/TheMercuryBeat/MasterMind/blob/mvp.pv/docs/images/PackageMasterMindModels.png?raw=true)
 
 ## Paquete mastermind.utils
-![mastermind.utils](https://github.com/TheMercuryBeat/MasterMind/blob/mvp.pm.withComposite/docs/images/PackageMasterMindUtils.png?raw=true)
+![mastermind.utils](https://github.com/TheMercuryBeat/MasterMind/blob/mvp.pv/docs/images/PackageMasterMindUtils.png?raw=true)
 
-# Calidad del Software
-
-## Diseño
-
-- **Principio de Sustitución de Liskov**: las vistas preguntan por el tipo de controlador polimórfico
-  
 # Vista de Desarrollo/Implementación
-![development](https://github.com/TheMercuryBeat/MasterMind/blob/mvp.pm.withComposite/docs/images/MasterMindDevelopment.png?raw=true)
+![development](https://github.com/TheMercuryBeat/MasterMind/blob/mvp.pv/docs/images/MasterMindDevelopment.png?raw=true)
 
 # Vista de Despliegue/Física
-![deployment](https://github.com/TheMercuryBeat/MasterMind/blob/mvp.pm.withComposite/docs/images/MasterMindDeployment.png?raw=true)
+![deployment](https://github.com/TheMercuryBeat/MasterMind/blob/mvp.pv/docs/images/MasterMindDeployment.png?raw=true)
 
 ## Vista de Procesos
 
