@@ -30,28 +30,28 @@ Version 0.0.4
 Modelo/Vista/Presentador con vista pasiva
 
 ## Arquitectura
-![architecture](https://github.com/TheMercuryBeat/MasterMind/blob/mvp.pv/docs/images/MasterMindArquitecture.png?raw=true)
+![architecture](https://github.com/TheMercuryBeat/MasterMind/blob/mvc.pv/docs/images/MasterMindArquitecture.png?raw=true)
 
 ## Paquete mastermind
-![mastermind](https://github.com/TheMercuryBeat/MasterMind/blob/mvp.pv/docs/images/PackageMasterMind.png?raw=true)
+![mastermind](https://github.com/TheMercuryBeat/MasterMind/blob/mvc.pv/docs/images/PackageMasterMind.png?raw=true)
 
 ## Paquete mastermind.views
-![mastermind.views](https://github.com/TheMercuryBeat/MasterMind/blob/mvp.pv/docs/images/PackageMasterMindViews.png?raw=true)
+![mastermind.views](https://github.com/TheMercuryBeat/MasterMind/blob/mvc.pv/docs/images/PackageMasterMindViews.png?raw=true)
 
 ## Paquete mastermind.controllers
-![mastermind.controllers](https://github.com/TheMercuryBeat/MasterMind/blob/mvp.pv/docs/images/PackageMasterMindControllers.png?raw=true)
+![mastermind.controllers](https://github.com/TheMercuryBeat/MasterMind/blob/mvc.pv/docs/images/PackageMasterMindControllers.png?raw=true)
 
 ## Paquete mastermind.models
-![mastermind.models](https://github.com/TheMercuryBeat/MasterMind/blob/mvp.pv/docs/images/PackageMasterMindModels.png?raw=true)
+![mastermind.models](https://github.com/TheMercuryBeat/MasterMind/blob/mvc.pv/docs/images/PackageMasterMindModels.png?raw=true)
 
 ## Paquete mastermind.utils
-![mastermind.utils](https://github.com/TheMercuryBeat/MasterMind/blob/mvp.pv/docs/images/PackageMasterMindUtils.png?raw=true)
+![mastermind.utils](https://github.com/TheMercuryBeat/MasterMind/blob/mvc.pv/docs/images/PackageMasterMindUtils.png?raw=true)
 
 # Vista de Desarrollo/Implementación
-![development](https://github.com/TheMercuryBeat/MasterMind/blob/mvp.pv/docs/images/MasterMindDevelopment.png?raw=true)
+![development](https://github.com/TheMercuryBeat/MasterMind/blob/mvc.pv/docs/images/MasterMindDevelopment.png?raw=true)
 
 # Vista de Despliegue/Física
-![deployment](https://github.com/TheMercuryBeat/MasterMind/blob/mvp.pv/docs/images/MasterMindDeployment.png?raw=true)
+![deployment](https://github.com/TheMercuryBeat/MasterMind/blob/mvc.pv/docs/images/MasterMindDeployment.png?raw=true)
 
 ## Vista de Procesos
 
