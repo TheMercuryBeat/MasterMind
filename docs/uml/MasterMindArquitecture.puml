@@ -9,11 +9,16 @@
     package java.io{ }
 
     mastermind .down.> mastermind.controller
-    mastermind .down.> mastermind.views
+    mastermind .down.> mastermind.models
     mastermind.controller .down.> mastermind.models
-    mastermind.views .down.> mastermind.controller
+    mastermind.controller .down.> mastermind.views
+    mastermind.controller .down.> mastermind.utils
     mastermind.views .down.> mastermind.utils
+    mastermind.views .down.> java.io
+    mastermind.views .down.> java.util
     mastermind.models .down.> java.util
-    mastermind.utils .down.> java.io
+
+
+
 
 @enduml

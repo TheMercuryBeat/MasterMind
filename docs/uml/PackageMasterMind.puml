@@ -1,25 +1,14 @@
 @startuml
 
     class mastermind.Mastermind{
-        - final Logic logic
-        - final AbstractView abstractView
-        # Mastermind()
-        # void play()
-        # abstract AbstractView createView()
-    }
-
-    class mastermind.ConsoleMastermind extends mastermind.Mastermind{
-        # AbstractView createView()
+        - final Session session
+        - final Map<StateValue, Controller> controllers
+        ~ Mastermind()
+        ~ void play()
         + {static} void main(String[] args)
     }
 
-    class mastermind.GraphicsMastermind extends mastermind.Mastermind{
-        # AbstractView createView()
-        + {static} void main(String[] args)
-    }
-
-    mastermind.Mastermind *---> mastermind.views.AbstractView
-    mastermind.Mastermind *--> mastermind.controller.Logic
-    mastermind.controller.Logic *--> mastermind.models.Game
+    mastermind.Mastermind *--> mastermind.models
+    mastermind.Mastermind *--> mastermind.controllers
 
 @enduml

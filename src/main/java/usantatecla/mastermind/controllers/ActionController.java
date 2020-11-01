@@ -23,7 +23,7 @@ class ActionController extends InGameController {
         return true;
     }
 
-    ProposedCombination readProposedCombination() {
+    private ProposedCombination readProposedCombination() {
 
         ProposedCombination proposedCombination = new ProposedCombination();
         Error error;

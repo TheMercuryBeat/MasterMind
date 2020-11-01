@@ -3,105 +3,110 @@
 
 package mastermind.controllers {
 
-    interface ControllerVisitor {
-       visit(StartController startController): void
-       visit(ProposalController proposalController): void
-       visit(ResumeController resumeController): void
-    }
-
-    interface AcceptorController {
-        accept(ControllerVisitor controllerVisitor): void
-    }
-
     abstract class Controller {
         # Session session
         ~ Controller(Session session)
-        + void next(): void
+        + abstract control(): void
     }
 
-    class Logic {
-        - final Session session
-        - final Map<StateValue, Controller> controllers
-        + Logic()
-        + getController(): AcceptorController
+    abstract class InGameController {
+        ~ InGameController(Session session)
+        # abstract inGameControl(): void
+        + abstract isActive(): boolean
+        + control(): void
     }
 
     class ProposalController {
-        - final ActionController actionController
-        - final UndoController undoController
-        - final RedoController redoController
-        ~ ProposalController(Session session)
-        + addProposedCombination(ProposedCombination proposedCombination): void
-        + isLooser(): boolean
-        + isWinner(): boolean
-        + getAttempts(): int
-        + getProposedCombination(int position): ProposedCombination
-        + getResult(int position): Result
-        + undo(): void
-        + isUndoable(): boolean
-        + redo(): void
-        + isRedoable(): boolean
-        + accept(ControllerVisitor controllerVisitor): void
-     }
-
-    class ResumeController {
-        ~ ResumeController(Game game, State state)
-        + resume(): void
-        + accept(ControllerVisitor controllerVisitor): void
+        - final Menu menu
+        + ProposalController(Session session)
+        + control(): void
     }
 
     class StartController {
-        ~ StartController(Game game, State state)
-        + accept(ControllerVisitor controllerVisitor): void
+        + StartController(Session session)
+        + control(): void
+    }
+
+    class ResumeController {
+        + ResumeController(Session session)
+        + control(): void
     }
 
     class ActionController {
         ~ ActionController(Session session)
-        ~ addProposedCombination(ProposedCombination proposedCombination): void
-        ~ isLooser(): boolean
-        ~ isWinner(): boolean
-        ~ getAttempts(): int
-        ~ getProposedCombination(int position): ProposedCombination
-        ~ getResult(int position): Result
+        # inGameControl(): void
+        + isActive(): boolean
+        - readProposedCombination(): ProposedCombination
     }
 
     class UndoController {
         ~ UndoController(Session session)
-        ~ undo(): void
-        ~ isUndoable(): boolean
+        # inGameControl(): void
+        + isActive(): boolean
     }
 
     class RedoController {
         ~ RedoController(Session session)
-        ~ void redo()
-        ~ boolean isRedoable()
+        # inGameControl(): void
+        + isActive(): boolean
     }
-
 }
 
 package mastermind.models {
     class Session
 }
 
-AcceptorController <|---- StartController
-AcceptorController <|---- ProposalController
-AcceptorController <|---- ResumeController
+package mastermind.views {
+    class StartView
+    class Menu
+    class ProposalView
+    class MessageView
+    class SecretCombinationView
+    class ProposedCombinationView
+    class ResultView
+    class ResumeView
+    class ColorView
+    class ErrorView
+}
+
+package mastermind.utils {
+    interface Command
+}
 
 Controller <|--- StartController
 Controller <|--- ProposalController
-Controller <|--- ActionController
-Controller <|--- UndoController
-Controller <|--- RedoController
 Controller <|--- ResumeController
+Controller <|--- InGameController
 
-StartController *---> ControllerVisitor
-ProposalController *---> ControllerVisitor
-ResumeController *---> ControllerVisitor
+InGameController <|--- ActionController
+InGameController <|--- UndoController
+InGameController <|--- RedoController
 
-Logic *--> Session
-Logic *---> StartController
-Logic *---> ProposalController
-Logic *---> ResumeController
-Logic o---> AcceptorController
+ProposalController *----> ActionController
+ProposalController *----> UndoController
+ProposalController *----> RedoController
+
+StartController ....> StartView
+ResumeController ....> ResumeView
+
+ActionController ....> ProposalView
+ActionController ....> ColorView
+ActionController ....> ErrorView
+
+InGameController ....> MessageView
+InGameController ....> SecretCombinationView
+InGameController ....> ProposedCombinationView
+InGameController ....> ResultView
+
+Controller *--> Session
+ProposalController *--> Menu
+Menu *--> Command
+Command ....> ActionController
+Command ....> UndoController
+Command ....> RedoController
+
+
+
+
 
 @enduml
