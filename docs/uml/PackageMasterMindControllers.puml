@@ -9,28 +9,118 @@ package mastermind.controllers {
        visit(ResumeController resumeController): void
     }
 
-    interface AcceptorController {
-        accept(ControllerVisitor controllerVisitor): void
-    }
-
     abstract class Controller {
         # Session session
         ~ Controller(Session session)
-        + void next(): void
+        + getValueState(): StateValue
+    }
+
+    enum FrameType {
+        START
+        STATE
+        ADD_PROPOSAL
+        GET_PROPOSAL
+        GET_ATTEMPTS
+        GET_RESULT
+        UNDO
+        REDO
+        UNDOABLE
+        REDOABLE
+        NEXT_STATE
+        RESUME
+        LOOSER
+        WINNER
+        CLOSE
+        + {static} parser(String string): FrameType
     }
 
     class Logic {
-        - final Session session
-        - final Map<StateValue, Controller> controllers
-        + Logic()
+        # Session session
+        # Map<StateValue, AcceptorController> controllers
+        # Logic()
         + getController(): AcceptorController
     }
 
-    class ProposalController {
+    abstract class ProposalController extends AcceptorController {
+        + ProposalController(Session session)
+        + abstract addProposedCombination(ProposedCombination proposedCombination): void
+        + abstract isLooser(): boolean
+        + abstract isWinner(): boolean
+        + abstract getAttempts(): int
+        + abstract getProposedCombination(int position): ProposedCombination
+        + abstract getResult(int position): Result
+        + abstract undo(): void
+        + abstract isUndoable(): boolean
+        + abstract redo(): void
+        + abstract isRedoable(): boolean
+        + abstract next(): void
+        + accept(ControllerVisitor controllerVisitor): void
+    }
+
+    abstract class ResumeController extends AcceptorController {
+        + ResumeController(Session session)
+        + abstract resume(boolean newGame): void
+        + accept(ControllerVisitor controllerVisitor): void
+    }
+
+    abstract class StartController extends AcceptorController {
+        + StartController(Session session)
+        + abstract resume(boolean newGame): void
+        + accept(ControllerVisitor controllerVisitor): void
+    }
+
+    abstract class AcceptorController extends Controller {
+        AcceptorController(Session session)
+        + abstract accept(ControllerVisitor controllerVisitor): void
+    }
+
+    class UndoController extends Controller {
+            - final SessionImplementation sessionImplementation
+            + UndoController(Session session)
+            + redo(): void
+            + isRedoable(): boolean
+        }
+
+    class RedoController extends Controller {
+        - final SessionImplementation sessionImplementation
+        + RedoController(Session session)
+        + redo(): void
+        + isRedoable(): boolean
+    }
+
+}
+
+package mastermind.models {
+    class Session
+    class StateValue
+}
+
+
+Controller *---> Session
+AcceptorController *---> ControllerVisitor
+Logic *---> Session
+Logic *---> StateValue
+Logic *---> AcceptorController
+
+
+@enduml
+
+@startuml
+
+package mastermind.controllers.implementation {
+
+    class LogicImplementation extends mastermind.controllers.Logic {
+        # StartControllerImplementation startControllerImplementation
+        # ProposalControllerImplementation proposalControllerImplementation
+        # ResumeControllerImplementation resumeControllerImplementation
+        + LogicImplementation();
+    }
+
+    class ProposalControllerImplementation extends mastermind.controllers.ProposalController {
         - final ActionController actionController
         - final UndoController undoController
         - final RedoController redoController
-        ~ ProposalController(Session session)
+        ~ ProposalControllerImplementation(Session session)
         + addProposedCombination(ProposedCombination proposedCombination): void
         + isLooser(): boolean
         + isWinner(): boolean
@@ -41,67 +131,39 @@ package mastermind.controllers {
         + isUndoable(): boolean
         + redo(): void
         + isRedoable(): boolean
-        + accept(ControllerVisitor controllerVisitor): void
-     }
-
-    class ResumeController {
-        ~ ResumeController(Game game, State state)
-        + resume(): void
-        + accept(ControllerVisitor controllerVisitor): void
+        + next(): void
     }
 
-    class StartController {
-        ~ StartController(Game game, State state)
-        + accept(ControllerVisitor controllerVisitor): void
+    class ResumeControllerImplementation extends mastermind.controllers.ResumeController {
+        ~ SessionImplementation sessionImplementation
+        + ResumeControllerImplementation(Session session)
+        + resume(boolean newGame): void
     }
 
-    class ActionController {
-        ~ ActionController(Session session)
-        ~ addProposedCombination(ProposedCombination proposedCombination): void
-        ~ isLooser(): boolean
-        ~ isWinner(): boolean
-        ~ getAttempts(): int
-        ~ getProposedCombination(int position): ProposedCombination
-        ~ getResult(int position): Result
+    class StartControllerImplementation extends mastermind.controllers.StartController {
+        ~ SessionImplementation sessionImplementation
+        + StartControllerImplementation(Session session)
+        + start(): void
     }
 
-    class UndoController {
-        ~ UndoController(Session session)
-        ~ undo(): void
-        ~ isUndoable(): boolean
-    }
+}
 
-    class RedoController {
-        ~ RedoController(Session session)
-        ~ void redo()
-        ~ boolean isRedoable()
-    }
-
+package mastermind.controllers {
+    class Logic
 }
 
 package mastermind.models {
     class Session
+    class ProposedCombination
 }
 
-AcceptorController <|---- StartController
-AcceptorController <|---- ProposalController
-AcceptorController <|---- ResumeController
+LogicImplementation *---> StartControllerImplementation
+LogicImplementation *---> ProposalControllerImplementation
+LogicImplementation *---> ResumeControllerImplementation
 
-Controller <|--- StartController
-Controller <|--- ProposalController
-Controller <|--- ActionController
-Controller <|--- UndoController
-Controller <|--- RedoController
-Controller <|--- ResumeController
-
-StartController *---> ControllerVisitor
-ProposalController *---> ControllerVisitor
-ResumeController *---> ControllerVisitor
-
-Logic *--> Session
-Logic *---> StartController
-Logic *---> ProposalController
-Logic *---> ResumeController
-Logic o---> AcceptorController
+ProposalControllerImplementation *---> Session
+ProposalControllerImplementation *---> ProposedCombination
+ResumeControllerImplementation *---> Session
+StartControllerImplementation *---> Session
 
 @enduml

@@ -8,6 +8,8 @@ package "  "  as mastermind.models {
 }
 package "  "  as mastermind.controllers {
 }
+package "  "  as mastermind.controllers.implementation {
+}
 package "  "  as mastermind.utils {
 }
 package "  "  as java.io {
@@ -20,8 +22,80 @@ mastermind.jar *---> mastermind
 mastermind.jar *---> mastermind.models
 mastermind.jar *---> mastermind.views
 mastermind.jar *---> mastermind.controllers
+mastermind.jar *---> mastermind.controllers.implementation
 mastermind.jar *---> mastermind.utils
 mastermind.jar *---> java.io
 mastermind.jar *---> java.util
+
+@enduml
+
+@startuml
+
+package "  "  as mastermind {
+}
+package "  "  as mastermind.views {
+}
+package "  "  as mastermind.models {
+}
+package "  "  as mastermind.controllers {
+}
+package "  "  as mastermind.distributed {
+}
+package "  "  as mastermind.distributed.proxy {
+}
+package "  "  as mastermind.utils {
+}
+package "  "  as java.io {
+}
+package "  "  as java.util {
+}
+
+[mastermindClient.jar]
+mastermindClient.jar *---> mastermind
+mastermindClient.jar *---> mastermind.models
+mastermindClient.jar *---> mastermind.views
+mastermindClient.jar *---> mastermind.controllers
+mastermindClient.jar *---> mastermind.distributed
+mastermindClient.jar *---> mastermind.distributed.proxy
+mastermindClient.jar *---> mastermind.utils
+mastermindClient.jar *---> java.io
+mastermindClient.jar *---> java.util
+
+@enduml
+
+@startuml
+
+package "  "  as mastermind {
+}
+package "  "  as mastermind.views {
+}
+package "  "  as mastermind.models {
+}
+package "  "  as mastermind.controllers {
+}
+package "  "  as mastermind.controllers.implementation {
+}
+package "  "  as mastermind.distributed {
+}
+package "  "  as mastermind.distributed.dispatchers {
+}
+package "  "  as mastermind.utils {
+}
+package "  "  as java.io {
+}
+package "  "  as java.util {
+}
+
+[mastermindServer.jar]
+mastermindServer.jar *---> mastermind
+mastermindServer.jar *---> mastermind.models
+mastermindServer.jar *---> mastermind.views
+mastermindServer.jar *---> mastermind.controllers
+mastermindServer.jar *---> mastermind.controllers.implementation
+mastermindServer.jar *---> mastermind.distributed
+mastermindServer.jar *---> mastermind.distributed.dispatchers
+mastermindServer.jar *---> mastermind.utils
+mastermindServer.jar *---> java.io
+mastermindServer.jar *---> java.util
 
 @enduml

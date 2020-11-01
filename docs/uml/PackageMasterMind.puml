@@ -5,18 +5,27 @@
         - final AbstractView abstractView
         # Mastermind()
         # void play()
+        # abstract Logic createLogic()
         # abstract AbstractView createView()
     }
 
     class mastermind.ConsoleMastermind extends mastermind.Mastermind{
         # AbstractView createView()
+        # abstract Logic createLogic()
         + {static} void main(String[] args)
     }
 
     class mastermind.GraphicsMastermind extends mastermind.Mastermind{
         # AbstractView createView()
+        # abstract Logic createLogic()
         + {static} void main(String[] args)
     }
+
+     class mastermind.MastermindClient extends mastermind.Mastermind{
+            # AbstractView createView()
+            # abstract Logic createLogic()
+            + {static} void main(String[] args)
+        }
 
     mastermind.Mastermind *---> mastermind.views.AbstractView
     mastermind.Mastermind *--> mastermind.controller.Logic

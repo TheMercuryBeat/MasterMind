@@ -1,0 +1,209 @@
+
+@startuml
+
+package mastermind.distributed {
+
+    abstract class Dispatcher{
+        # AcceptorController acceptorController
+        # TCPIP tcpip
+        + Dispatcher(AcceptorController acceptorController)
+        + abstract dispatch(): void
+        + associate(TCPIP tcpip): void
+    }
+
+    class DispatcherPrototype{
+        - final TCPIP tcpip
+        - final Map<FrameType, Dispatcher> dispatcherMap
+        ~ DispatcherPrototype()
+        ~ add(FrameType frameType, Dispatcher dispatcher): void
+        ~ serve(): void
+    }
+
+    class LogicServerImplementation{
+         associateDispatchers(DispatcherPrototype dispatcherPrototype): void
+    }
+
+    class MastermindClient extends Mastermind {
+        ~ createLogic(): Logic
+        ~ createView(): AbstractView
+        + {static} main(String[] args): void
+    }
+
+    class MastermindServer{
+        - final DispatcherPrototype dispatcherPrototype
+        - MastermindServer()
+        - serve(): void
+        + {static} main(String[] args): void
+    }
+
+    class TCPIP extends TCPIPUtils {
+        + TCPIP(Socket socket)
+        + TCPIP(ServerSocket serverSocket, Socket socket)
+        + {static} createClientSocket(): TCPIP
+        + {static} createServerSocket(): TCPIP
+        + receiveProposedCombination(): ProposedCombination
+        + sendProposedCombination(ProposedCombination proposedCombination): void
+    }
+}
+
+Dispatcher *---> mastermind.controllers.AcceptorController
+Dispatcher *---> TCPIP
+
+DispatcherPrototype *---> TCPIP
+DispatcherPrototype *---> mastermind.controllers.FrameType
+DispatcherPrototype *---> Dispatcher
+
+LogicServerImplementation *---> DispatcherPrototype
+
+MastermindClient *---> mastermind.controllers.Logic
+MastermindClient *---> mastermind.views.AbstractView
+
+MastermindServer *---> DispatcherPrototype
+MastermindServer *---> LogicServerImplementation
+
+TCPIP *---> mastermind.models.ProposedCombination
+
+@enduml
+
+@startuml
+
+package mastermind.distributed.dispatchers {
+
+    class AddProposalDispatcher extends Dispatcher {
+        + AddProposalDispatcher(ProposalController proposalController)
+        + dispatch(): void
+    }
+
+    class AttemptsDispatcher extends Dispatcher {
+        + AddProposalDispatcher(ProposalController proposalController)
+        + dispatch(): void
+    }
+
+    class GetProposalDispatcher extends Dispatcher {
+        + AddProposalDispatcher(ProposalController proposalController)
+        + dispatch(): void
+    }
+
+    class LooserDispatcher extends Dispatcher {
+        + AddProposalDispatcher(ProposalController proposalController)
+        + dispatch(): void
+    }
+
+    class NextStateDispatcher extends Dispatcher {
+        + AddProposalDispatcher(ProposalController proposalController)
+        + dispatch(): void
+    }
+
+    class RedoableDispatcher extends Dispatcher {
+        + AddProposalDispatcher(ProposalController proposalController)
+        + dispatch(): void
+    }
+
+    class RedoDispatcher extends Dispatcher {
+        + AddProposalDispatcher(ProposalController proposalController)
+        + dispatch(): void
+    }
+
+    class ResultDispatcher extends Dispatcher {
+        + AddProposalDispatcher(ProposalController proposalController)
+        + dispatch(): void
+    }
+
+    class ResumeDispatcher extends Dispatcher {
+        + AddProposalDispatcher(ProposalController proposalController)
+        + dispatch(): void
+    }
+
+    class StartDispatcher extends Dispatcher {
+        + AddProposalDispatcher(ProposalController proposalController)
+        + dispatch(): void
+    }
+
+    class StateDispatcher extends Dispatcher {
+        + AddProposalDispatcher(ProposalController proposalController)
+        + dispatch(): void
+    }
+
+    class UndoableDispatcher extends Dispatcher {
+        + AddProposalDispatcher(ProposalController proposalController)
+        + dispatch(): void
+    }
+
+    class UndoDispatcher extends Dispatcher {
+        + AddProposalDispatcher(ProposalController proposalController)
+        + dispatch(): void
+    }
+
+    class WinnerDispatcher extends Dispatcher {
+        + AddProposalDispatcher(ProposalController proposalController)
+        + dispatch(): void
+    }
+
+}
+
+Dispatcher *---> mastermind.controllers.ProposalController
+
+@enduml
+
+@startuml
+
+package mastermind.distributed.proxy {
+
+    class LogicProxy extends mastermind.controllers.Logic{
+        - final TCPIP tcpip
+        + LogicProxy()
+    }
+
+    class ProposalControllerProxy extends mastermind.controllers.ProposalController {
+         - final TCPIP tcpip;
+         ProposalControllerProxy(Session session, TCPIP tcpip)
+         + addProposedCombination(ProposedCombination proposedCombination): void
+         + isLooser(): boolean
+         + isWinner(): boolean
+         + getAttempts(): int
+         + getProposedCombination(int position): ProposedCombination
+         + getResult(int position): Result
+         + undo(): void
+         + isUndoable(): boolean
+         + redo(): void
+         + isRedoable(): boolean
+         + next(): void
+    }
+
+    class ResumeControllerProxy extends mastermind.controllers.ResumeController {
+        - final TCPIP tcpip;
+        + ResumeControllerProxy(Session session, TCPIP tcpip)
+        + resume(boolean newGame): void
+    }
+
+    class SessionProxy implements mastermind.models.Session {
+        - final TCPIP tcpip
+        SessionProxy(TCPIP tcpip)
+        + getValueState(): StateValue
+    }
+
+    class StartControllerProxy extends mastermind.controllers.StartController {
+       - final TCPIP tcpip
+       StartControllerProxy(Session session, TCPIP tcpip)
+       + start():void
+   }
+
+}
+
+Logic *--> TCPIP
+
+ProposalControllerProxy *-----> TCPIP
+ProposalControllerProxy *-----> mastermind.models.Session
+ProposalControllerProxy *-----> mastermind.controllers.FrameType
+
+ResumeControllerProxy *-----> TCPIP
+ResumeControllerProxy *-----> mastermind.models.Session
+ResumeControllerProxy *-----> mastermind.controllers.FrameType
+
+SessionProxy *-----> TCPIP
+SessionProxy *-----> mastermind.controllers.FrameType
+
+StartControllerProxy *-----> TCPIP
+StartControllerProxy *-----> mastermind.controllers.FrameType
+
+@enduml

@@ -3,15 +3,28 @@
     package mastermind #DDDDDD { }
     package mastermind.models #DDDDDD { }
     package mastermind.controller #DDDDDD{ }
+    package mastermind.controller.implementation #DDDDDD{ }
+    package mastermind.distributed #DDDDDD{ }
+    package mastermind.distributed.proxy #DDDDDD{ }
+    package mastermind.distributed.dispatchers #DDDDDD{ }
     package mastermind.views #DDDDDD { }
     package mastermind.utils #DDDDDD { }
     package java.util{ }
     package java.io{ }
 
     mastermind .down.> mastermind.controller
+    mastermind .down.> mastermind.controller.implementation
     mastermind .down.> mastermind.views
+
     mastermind.controller .down.> mastermind.models
+    mastermind.controller .down.> mastermind.controller.implementation
+    mastermind.distributed .down.> mastermind.distributed.proxy
+    mastermind.distributed .down.> mastermind.distributed.dispatchers
+    mastermind.distributed .down.> mastermind
+    mastermind.distributed .down.> mastermind.utils
+    mastermind.distributed.dispatchers .down.> mastermind.controller
     mastermind.views .down.> mastermind.controller
+    mastermind.views .down.> mastermind.controller.implementation
     mastermind.views .down.> mastermind.utils
     mastermind.models .down.> java.util
     mastermind.utils .down.> java.io

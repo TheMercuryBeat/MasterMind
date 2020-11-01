@@ -125,11 +125,15 @@
     mastermind.models.GameRegistry *--> mastermind.models.Game
     mastermind.models.GameRegistry ...> mastermind.models.GameVersion
 
-    class mastermind.models.Session {
+    interface mastermind.models.Session {
+        getValueState(): StateValue
+    }
+
+    class mastermind.models.SessionImplementation implements mastermind.models.Session{
         - final Game game
         - final GameRegistry gameRegistry
         - final State state
-        + Session()
+        + SessionImplementation()
         + clear(): void
         + addProposedCombination(ProposedCombination proposedCombination): void
         + isLooser(): boolean
@@ -145,9 +149,9 @@
         + getValueState(): StateValue
     }
 
-    mastermind.models.Session *---> mastermind.models.Game
-    mastermind.models.Session *---> mastermind.models.GameRegistry
-    mastermind.models.Session *---> mastermind.models.State
-    mastermind.models.Session ...> mastermind.models.StateValue
+    mastermind.models.SessionImplementation *---> mastermind.models.Game
+    mastermind.models.SessionImplementation *---> mastermind.models.GameRegistry
+    mastermind.models.SessionImplementation *---> mastermind.models.State
+    mastermind.models.SessionImplementation ...> mastermind.models.StateValue
 
 @enduml
