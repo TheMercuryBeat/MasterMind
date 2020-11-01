@@ -1,13 +1,44 @@
 @startuml
 
-node node #DDDDDD [
-    <b>Personal Computer</b>
-    ----
-    memory : xxx Mb
-    cpu : xxx GHz
-]
+package standalone{
 
-[mastermind.jar]
-node *--> mastermind.jar
+    node node #DDDDDD [
+        <b>Personal Computer</b>
+        ----
+        memory : xxx Mb
+        cpu : xxx GHz
+    ]
+
+    [mastermind.jar]
+    node *--> mastermind.jar
+
+}
+
+package clientServer{
+
+    node node1 #DDDDDD [
+        <b>Client Computer</b>
+        ----
+        memory : xxx Mb
+        cpu : xxx GHz
+    ]
+
+    [mastermindClient.jar]
+    node1 *--> mastermindClient.jar
+
+    node node2 #DDDDDD [
+        <b>Server Computer</b>
+        ----
+        memory : xxx Mb
+        cpu : xxx GHz
+    ]
+
+    [mastermindServer.jar]
+    node2 *--> mastermindServer.jar
+
+     node1 -right-> node2
+
+}
+
 
 @enduml
